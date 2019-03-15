@@ -3,7 +3,7 @@
 
 <!-- Banner
 ================================================== -->
-<div class="parallax" data-background="images/home-parallax-2.jpg" data-color="#36383e" data-color-opacity="0.5" data-img-width="2500" data-img-height="1600">
+<div class="parallax" data-background="images/place.jpg" data-color="#36383e" data-color-opacity="0.5" data-img-width="2500" data-img-height="1600">
 
 	<div class="container">
 		<div class="row">
