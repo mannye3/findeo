@@ -1,4 +1,15 @@
-<?php include('inc/header.php'); ?>
+<?php
+$menu="home";
+include('core/select.php'); 
+
+
+ini_set('display_errors', 1);
+  error_reporting(~0);
+
+  $strKeyword = null;
+include('inc/header.php'); 
+
+?>
 
 
 <!-- Banner
@@ -18,28 +29,27 @@
 					<div class="row with-forms">
 
 						<!-- Property Type -->
-						<div class="col-md-3">
-							<select data-placeholder="Any Type" class="chosen-select-no-single" >
+						<div class="col-md-6">
+							<div class="main-search-input">
+								<input type="text" value="<?php echo $strKeyword;?>" name="query" id="autocomplete" onFocus="geolocate()" placeholder="Where do you want to live?" />
+								<!-- <button class="button"><i class="fa fa-search"></i></button> -->
+							</div>
+							
+						</div>
+
+						<!-- Status -->
+						
+
+						<!-- Main Search Input -->
+						<div class="col-md-6">
+							<div class="main-search-input">
+								<select data-placeholder="Any Type" class="chosen-select-no-single" >
 								<option>Apartments</option>
 								<option>Houses</option>
 								<option>Commercial</option>
 								<option>Garages</option>
 								<option>Lots</option>
 							</select>
-						</div>
-
-						<!-- Status -->
-						<div class="col-md-3">
-							<select data-placeholder="Any Status" class="chosen-select-no-single" >
-								<option>For Sale</option>
-								<option>For Rent</option>
-							</select>
-						</div>
-
-						<!-- Main Search Input -->
-						<div class="col-md-6">
-							<div class="main-search-input">
-								<input type="text" placeholder="Enter address e.g. street, city or state" value=""/>
 								<button class="button"><i class="fa fa-search"></i></button>
 							</div>
 						</div>
