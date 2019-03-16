@@ -46,16 +46,19 @@ if(isset($_POST["register"]))
                 if($row['email']==$email){
                   
 
-                   $ermsg   = '<div class="alert alert-danger" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                     <strong>User already exist, Register with a new email</strong></div>';
+                   $ermsg   = '<div class="notification error closeable">
+                      <p><span>User already exist, Register with a new email</span> </p>
+                      <a class="close" href="#"></a>
+                    </div>';
+
                   
                 }
 
                 if ($row['phone']==$phone) {
-                 $ermsgphone   = '<div class="alert alert-danger" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                     <strong>User already exist, Register with a new phone number</strong></div>';
+                 $ermsgphone   = '<div class="notification error closeable">
+                      <p><span>Phone number already exist, Register with a new phone number</span> </p>
+                      <a class="close" href="#"></a>
+                    </div>';
                 }
 
       else{
@@ -365,10 +368,10 @@ if(isset($_POST["register"]))
           mail($to, $subject, $message, $headers);
           
           //==================================End Mail===================================================//
- $scmsg= ' <div class="alert alert-success" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <strong>Registration Successful, <a href="login.php" class="alert-link">Login</a> to manage your account</strong> 
-                </div>';
+ $scmsg= '<div class="notification success closeable">
+              <p><span>Registration Successful, Login to manage your account</span> </p>
+              <a class="close" href="#"></a>
+            </div>';
 
 
 

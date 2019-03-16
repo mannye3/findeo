@@ -16,12 +16,12 @@ include('connect.php');
 
 
 
-$sql = "SELECT * FROM property WHERE  (`address` LIKE '%".$p_location."%' OR `state` LIKE '%".$p_location."%' OR `lga` LIKE '%".$p_location."%') AND (`type` LIKE '%".$p_type."%') ";
+$sql = "SELECT * FROM property WHERE  (`address` LIKE '%".$p_location."%' OR `state` LIKE '%".$p_location."%' OR `lga` LIKE '%".$p_location."%') AND (`type` LIKE '%".$p_type."%') AND status=1 ";
     $query = mysqli_query($con,$sql);
 
     $num_rows = mysqli_num_rows($query);
 
-    $per_page = 1;   // Per Page
+    $per_page = 10;   // Per Page
     $page  = 1;
     
     if(isset($_GET["Page"]))

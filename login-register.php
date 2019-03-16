@@ -1,4 +1,5 @@
-<?php include('inc/header.php'); ?>
+<?php include('core/logic.php');
+include('inc/header.php'); ?>
 
 <!-- Titlebar
 ================================================== -->
@@ -40,6 +41,9 @@
 	<div class="my-account style-1 margin-top-5 margin-bottom-40">
 
 		<ul class="tabs-nav">
+			 <?php echo $scmsg; ?>
+                        <?php echo $ermsg; ?>
+                        <?php echo $ermsgphone  ?>
 			<li class=""><a href="#tab1">Log In</a></li>
 			<li><a href="#tab2">Register</a></li>
 		</ul>
@@ -51,7 +55,7 @@
 				<form method="post" class="login">
 
 					<p class="form-row form-row-wide">
-						<label for="username">Username:
+						<label for="username">Full Name:
 							<i class="im im-icon-Male"></i>
 							<input type="text" class="input-text" name="username" id="username" value="" />
 						</label>
@@ -60,7 +64,7 @@
 					<p class="form-row form-row-wide">
 						<label for="password">Password:
 							<i class="im im-icon-Lock-2"></i>
-							<input class="input-text" type="password" name="password" id="password"/>
+							<input class="input-text" type="password"  />
 						</label>
 					</p>
 
@@ -84,35 +88,55 @@
 				<form method="post" class="register">
 					
 				<p class="form-row form-row-wide">
-					<label for="username2">Username:
+					<label for="username2">Full Name:
 						<i class="im im-icon-Male"></i>
-						<input type="text" class="input-text" name="username" id="username2" value="" />
+						<input required="" type="text" class="input-text" name="name" id="username2" value="" />
 					</label>
 				</p>
 					
 				<p class="form-row form-row-wide">
 					<label for="email2">Email Address:
 						<i class="im im-icon-Mail"></i>
-						<input type="text" class="input-text" name="email" id="email2" value="" />
+						<input required="" type="text" class="input-text" name="email" id="email2" value="" />
+					</label>
+				</p>
+
+
+				<p class="form-row form-row-wide">
+					<label for="email2">Phone Number:
+						<i class="im im-icon-Phone"></i>
+						<input required="" type="input" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57"  name="phone" required=""class="input-text" />
 					</label>
 				</p>
 
 				<p class="form-row form-row-wide">
 					<label for="password1">Password:
 						<i class="im im-icon-Lock-2"></i>
-						<input class="input-text" type="password" name="password1" id="password1"/>
+						<input class="input-text" required="" minlength="6" id="password" type="password" name="password" />
 					</label>
 				</p>
 
 				<p class="form-row form-row-wide">
 					<label for="password2">Repeat Password:
 						<i class="im im-icon-Lock-2"></i>
-						<input class="input-text" type="password" name="password2" id="password2"/>
+						<input class="input-text" type="password" id="confirm_password" name="confirm_Password"/>
+					</label>
+				</p>
+
+				<p class="form-row form-row-wide">
+					<label for="password2">You are?
+					
+						<select name="type" required=""  >
+						<option label="blank"></option>	
+						<option value="Agent">Agent</option>
+						<option value="User">User</option>
+						
+					</select>
 					</label>
 				</p>
 
 				<p class="form-row">
-					<input type="submit" class="button border fw margin-top-10" name="register" value="Register" />
+					<input type="submit" name="register"  class="button border fw margin-top-10" name="register" value="Register" />
 				</p>
 
 				</form>
