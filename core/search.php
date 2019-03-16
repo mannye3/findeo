@@ -1,27 +1,27 @@
 <?php
 include('connect.php');
-  if(isset($_POST["query"]))
+  if(isset($_POST["location"]) OR isset($_POST["type"])  )
     {
-        $strKeyword = $_POST["query"];
+        $p_location = $_POST["location"];
 
-        $strKeyword2 = $_POST["query2"];
+        $p_type = $_POST["type"];
     }
-    if(isset($_GET["query"]))
+    if(isset($_GET["location"]) OR isset($_GET["type"]) )
     {
-        $strKeyword = $_GET["query"];
+        $p_location = $_GET["location"];
 
-        $strKeyword2 = $_POST["query2"];
+        $p_type = $_GET["type"];
     }
 
 
 
 
-$sql = "SELECT * FROM property WHERE  status='1' AND (`address` LIKE '%".$strKeyword."%','%".$strKeyword2."%' OR `state` LIKE '%".$strKeyword."%','%".$strKeyword2."%' OR `lga` LIKE '%".$strKeyword."%','%".$strKeyword2."%' OR `type` LIKE '%".$strKeyword."%','%".$strKeyword2."%')";
+$sql = "SELECT * FROM property WHERE  (`address` LIKE '%".$p_location."%' OR `state` LIKE '%".$p_location."%' OR `lga` LIKE '%".$p_location."%') AND (`type` LIKE '%".$p_type."%') ";
     $query = mysqli_query($con,$sql);
 
     $num_rows = mysqli_num_rows($query);
 
-    $per_page = 2;   // Per Page
+    $per_page = 1;   // Per Page
     $page  = 1;
     
     if(isset($_GET["Page"]))

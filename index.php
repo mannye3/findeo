@@ -6,7 +6,7 @@ include('core/select.php');
 ini_set('display_errors', 1);
   error_reporting(~0);
 
-  $strKeyword = null;
+  $p_location = null;
 include('inc/header.php'); 
 
 ?>
@@ -32,7 +32,7 @@ include('inc/header.php');
 						<!-- Property Type -->
 						<div class="col-md-6">
 							<div class="main-search-input">
-								<input type="text" value="<?php echo $strKeyword;?>" name="query" id="autocomplete" onFocus="geolocate()" placeholder="Where do you want to live?" />
+								<input type="text" value="<?php echo $p_location;?>" name="location" id="autocomplete" onFocus="geolocate()" placeholder="Where do you want to live?" />
 								<!-- <button class="button"><i class="fa fa-search"></i></button> -->
 							</div>
 							
@@ -44,8 +44,9 @@ include('inc/header.php');
 						<!-- Main Search Input -->
 						<div class="col-md-6">
 							<div class="main-search-input">
-								<select data-placeholder="Any Type" name="query2" class="chosen-select-no-single" >
+								<select data-placeholder="Any Type" name="type" class="chosen-select-no-single" >
 								<option value="flat">Flat</option>
+								<option value="bungalow">Bungalow</option>
 								<option value="shop">Shop</option>
 								<option value="warehouse">Warehouse</option>
 								<option value="bungalow">Bungalow</option>
