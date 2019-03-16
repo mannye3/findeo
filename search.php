@@ -1,4 +1,6 @@
-<?php include('inc/header.php'); ?>
+<?php include('core/search.php'); 
+	include('inc/header.php'); 
+	?>
 
 
 
@@ -81,6 +83,14 @@
 			<div class="listings-container list-layout">
 
 				<!-- Listing Item -->
+				  <?php
+              while($row=mysqli_fetch_array($query,MYSQLI_ASSOC))
+              {
+                 $sql_pro_img = "SELECT SUM(num) AS t_img FROM pro_img WHERE property_no=".$row["property_no"]." ";
+                    $query14 =mysqli_query($con, $sql_pro_img);
+                    $rw14 =mysqli_fetch_array($query14);
+                        $t_img = $rw14['t_img'];
+              ?>
 				<div class="listing-item">
 
 					<a href="single-property-page-1.html" class="listing-img-container">
@@ -128,6 +138,9 @@
 					<!-- Listing Item / End -->
 
 				</div>
+				     <?php
+}
+?>
 				<!-- Listing Item / End -->
 
 

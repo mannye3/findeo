@@ -26,6 +26,7 @@ include('inc/header.php');
 					<h2>Find New Home</h2>
 
 					<!-- Row With Forms -->
+					<form method="get" action="search.php">
 					<div class="row with-forms">
 
 						<!-- Property Type -->
@@ -43,18 +44,19 @@ include('inc/header.php');
 						<!-- Main Search Input -->
 						<div class="col-md-6">
 							<div class="main-search-input">
-								<select data-placeholder="Any Type" class="chosen-select-no-single" >
-								<option>Apartments</option>
-								<option>Houses</option>
-								<option>Commercial</option>
-								<option>Garages</option>
-								<option>Lots</option>
+								<select data-placeholder="Any Type" name="query2" class="chosen-select-no-single" >
+								<option value="flat">Flat</option>
+								<option value="shop">Shop</option>
+								<option value="warehouse">Warehouse</option>
+								<option value="bungalow">Bungalow</option>
+								
 							</select>
-								<button class="button"><i class="fa fa-search"></i></button>
+								<button class="button" type="submit" name="search"><i class="fa fa-search"></i></button>
 							</div>
 						</div>
 
 					</div>
+					</form>
 					
 				
 

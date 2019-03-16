@@ -3,16 +3,20 @@ include('connect.php');
   if(isset($_POST["query"]))
     {
         $strKeyword = $_POST["query"];
+
+        $strKeyword2 = $_POST["query2"];
     }
     if(isset($_GET["query"]))
     {
         $strKeyword = $_GET["query"];
+
+        $strKeyword2 = $_POST["query2"];
     }
 
 
 
 
-$sql = "SELECT * FROM property WHERE  status='1' AND (`address` LIKE '%".$strKeyword."%' OR `state` LIKE '%".$strKeyword."%' OR `lga` LIKE '%".$strKeyword."%')";
+$sql = "SELECT * FROM property WHERE  status='1' AND (`address` LIKE '%".$strKeyword."%','%".$strKeyword2."%' OR `state` LIKE '%".$strKeyword."%','%".$strKeyword2."%' OR `lga` LIKE '%".$strKeyword."%','%".$strKeyword2."%' OR `type` LIKE '%".$strKeyword."%','%".$strKeyword2."%')";
     $query = mysqli_query($con,$sql);
 
     $num_rows = mysqli_num_rows($query);
