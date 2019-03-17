@@ -136,6 +136,16 @@
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxkyVw9JMI0N6HBsjIKelYK337j81RNec&libraries=places&callback=initAutocomplete"
         async defer></script>
 
+        
+
+<!-- DropZone | Documentation: http://dropzonejs.com -->
+<script type="text/javascript" src="scripts/dropzone.js"></script>
+<script>
+  $(".dropzone").dropzone({
+    dictDefaultMessage: "<i class='sl sl-icon-plus'></i> Click here or drop files to upload",
+  });
+</script>
+
 <script type="text/javascript" src="scripts/pass.js"></script>    
 <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/javascript" src="scripts/jquery-2.2.0.min.js"></script>
 <script type="text/javascript" src="scripts/chosen.min.js"></script>
