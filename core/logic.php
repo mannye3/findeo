@@ -46,7 +46,7 @@ if(isset($_POST["register"]))
                 if($row['email']==$email){
                   
 
-                   $ermsg   = '<div class="notification error closeable">
+                   $ermsg = '<div class="notification error closeable">
                       <p><span>User already exist, Register with a new email</span> </p>
                       <a class="close" href="#"></a>
                     </div>';
@@ -54,7 +54,7 @@ if(isset($_POST["register"]))
                   
                 }
 
-                if ($row['phone']==$phone) {
+                elseif ($row['phone']==$phone) {
                  $ermsgphone   = '<div class="notification error closeable">
                       <p><span>Phone number already exist, Register with a new phone number</span> </p>
                       <a class="close" href="#"></a>
@@ -429,7 +429,7 @@ if (isset($_POST['login'])) {
 
                 echo "<script language='javascript' type='text/javascript'>
 
-                        window.location.href='dashboard.php';
+                        window.location.href='my-profile.php';
 
                         </script>";
 

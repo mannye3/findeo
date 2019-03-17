@@ -55,21 +55,21 @@ include('inc/header.php'); ?>
 				<form method="post" class="login">
 
 					<p class="form-row form-row-wide">
-						<label for="username">Full Name:
-							<i class="im im-icon-Male"></i>
-							<input type="text" class="input-text" name="username" id="username" value="" />
+						<label for="username">Email:
+							<i class="im im-icon-Mail"></i>
+							<input type="email" class="input-text" name="email"  value="" />
 						</label>
 					</p>
 
 					<p class="form-row form-row-wide">
 						<label for="password">Password:
 							<i class="im im-icon-Lock-2"></i>
-							<input class="input-text" type="password"  />
+							<input class="input-text" name="password" type="password"  />
 						</label>
 					</p>
 
 					<p class="form-row">
-						<input type="submit" class="button border margin-top-10" name="login" value="Login" />
+						<input type="submit" name="login" class="button border margin-top-10" name="login" value="Login" />
 
 						<label for="rememberme" class="rememberme">
 						<input name="rememberme" type="checkbox" id="rememberme" value="forever" /> Remember Me</label>
@@ -97,7 +97,7 @@ include('inc/header.php'); ?>
 				<p class="form-row form-row-wide">
 					<label for="email2">Email Address:
 						<i class="im im-icon-Mail"></i>
-						<input required="" type="text" class="input-text" name="email" id="email2" value="" />
+						<input required="" type="text" class="input-text" name="email"  value="" />
 					</label>
 				</p>
 

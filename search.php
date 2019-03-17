@@ -15,7 +15,7 @@
 
 	<div id="titlebar">
 		<div class="container">
-			<div class="row">
+			<div class="row_sear_pro">
 				<div class="col-md-12">
 
 					<h2>Listings</h2>
@@ -39,7 +39,7 @@
 <!-- Content
 ================================================== -->
 <div class="container">
-	<div class="row sticky-wrapper">
+	<div class="row_sear_pro sticky-wrapper">
 
 		<div class="col-md-8">
 
@@ -50,9 +50,9 @@
 
 				<!-- Listing Item -->
 				  <?php
-              while($row=mysqli_fetch_array($query,MYSQLI_ASSOC))
+              while($row_sear_pro=mysqli_fetch_array($query_sear_pro,MYSQLI_ASSOC))
               {
-                 $sql_pro_img = "SELECT SUM(num) AS t_img FROM pro_img WHERE property_no=".$row["property_no"]." ";
+                 $sql_pro_img = "SELECT SUM(num) AS t_img FROM pro_img WHERE property_no=".$row_sear_pro["property_no"]." ";
                     $query14 =mysqli_query($con, $sql_pro_img);
                     $rw14 =mysqli_fetch_array($query14);
                         $t_img = $rw14['t_img'];
@@ -62,12 +62,12 @@
 					<a href="single-property-page-1.html" class="listing-img-container">
 
 						<div class="listing-badges">
-							<span class="featured"><?php  echo ucwords($row["type"]) ?></span>
+							<span class="featured"><?php  echo ucwords($row_sear_pro["type"]) ?></span>
 							
 						</div>
 
 						<div class="listing-img-content">
-							<span class="listing-price">₦<?php  echo number_format($row["price"]).""; ?></span>  
+							<span class="listing-price">₦<?php  echo number_format($row_sear_pro["price"]).""; ?></span>  
 
 							<span  style="float: right;"><?php echo $t_img ?> <i class="fa fa-image"></i></span>
 							
@@ -81,10 +81,10 @@
 					<div class="listing-content">
 
 						<div class="listing-title">
-							<h4><a href="single-property-page-1.html"><?php echo $row["title"]; ?></a></h4>
+							<h4><a href="single-property-page-1.html"><?php echo $row_sear_pro["title"]; ?></a></h4>
 							
 								<i class="fa fa-map-marker"></i>
-								<?php echo $row["address"]; ?>. <?php echo $row["lga"]; ?>, <?php echo $row["state"]; ?>
+								<?php echo $row_sear_pro["address"]; ?>. <?php echo $row_sear_pro["lga"]; ?>, <?php echo $row_sear_pro["state"]; ?>
 							
 
 							<a href="single-property-page-1.html" class="details button border">Details</a>
@@ -92,14 +92,14 @@
 
 						<ul class="listing-details">
 							
-							<li><?php echo $row["rooms"]; ?> Bedroom</li>
-							<li><?php echo $row["bathrooms"]; ?> Bathroms</li>
+							<li><?php echo $row_sear_pro["rooms"]; ?> Bedroom</li>
+							<li><?php echo $row_sear_pro["bathrooms"]; ?> Bathroms</li>
 							
 						</ul>
 
 						<div class="listing-footer">
 							<!-- <a href="#"><i class="fa fa-user"></i> Chester Miller</a> -->
-							<span><i class="fa fa-eye"></i><?php echo $row["view"]; ?> views</span>
+							<span><i class="fa fa-eye"></i><?php echo $row_sear_pro["view"]; ?> views</span>
 						</div>
 
 					</div>
@@ -165,18 +165,18 @@
 				<div class="widget margin-bottom-40">
 					<h3 class="margin-top-0 margin-bottom-35">Change Your Search</h3>
 
-					<!-- Row -->
-					<div class="row with-forms">
+					<!-- Row_sear_pro -->
+					<div class="row_sear_pro with-forms">
 						<!-- Status -->
 						<div class="col-md-12">
 							<input type="text" value="<?php echo $p_location;?>" name="location" id="autocomplete" onFocus="geolocate()" placeholder="Where do you want to live?" />
 						</div>
 					</div>
-					<!-- Row / End -->
+					<!-- Row_sear_pro / End -->
 
 
-					<!-- Row -->
-					<div class="row with-forms">
+					<!-- Row_sear_pro -->
+					<div class="row_sear_pro with-forms">
 						<!-- Type -->
 						<div class="col-md-12">
 						<select data-placeholder="Any Type" name="type" class="chosen-select-no-single" >
@@ -188,7 +188,7 @@
 								</select>
 													</div>
 					</div>
-					<!-- Row / End -->
+					<!-- Row_sear_pro / End -->
 
 					<button class="button fullwidth margin-top-30" type="submit" name="search">Search</button>
 				</div>

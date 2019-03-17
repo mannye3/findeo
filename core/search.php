@@ -16,10 +16,10 @@ include('connect.php');
 
 
 
-$sql = "SELECT * FROM property WHERE  (`address` LIKE '%".$p_location."%' OR `state` LIKE '%".$p_location."%' OR `lga` LIKE '%".$p_location."%') AND (`type` LIKE '%".$p_type."%') AND status=1 ";
-    $query = mysqli_query($con,$sql);
+$sql_sear_pro = "SELECT * FROM property WHERE  (`address` LIKE '%".$p_location."%' OR `state` LIKE '%".$p_location."%' OR `lga` LIKE '%".$p_location."%') AND (`type` LIKE '%".$p_type."%') AND status=1 ";
+    $query_sear_pro = mysqli_query($con,$sql_sear_pro);
 
-    $num_rows = mysqli_num_rows($query);
+    $num_rows = mysqli_num_rows($query_sear_pro);
 
     $per_page = 10;   // Per Page
     $page  = 1;
@@ -52,8 +52,8 @@ $sql = "SELECT * FROM property WHERE  (`address` LIKE '%".$p_location."%' OR `st
         $row_end = $num_rows;
     }
 
-    $sql .= " ORDER BY id ASC LIMIT $row_start ,$row_end ";
-    $query = mysqli_query($con,$sql);
+    $sql_sear_pro .= " ORDER BY id ASC LIMIT $row_start ,$row_end ";
+    $query_sear_pro = mysqli_query($con,$sql_sear_pro);
 
 
 

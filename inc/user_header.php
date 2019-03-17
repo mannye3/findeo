@@ -1,15 +1,3 @@
-<?php
-require_once('core/connect.php');
-ini_set('display_errors', '0');         # don't show any errors...
-error_reporting(E_ALL | E_STRICT);
-$user_check=$_SESSION['email'];     
-$sql = "SELECT * FROM users WHERE email='$user_check' ";
-$query  = mysqli_query($con, $sql);
-$row = mysqli_fetch_array($query);
-?>
-
-
-
 <!DOCTYPE html>
 
 <head>
@@ -130,15 +118,11 @@ $row = mysqli_fetch_array($query);
 
 
 			<div class="right-side">
-
-				<?php
-                    if(isset($user_check))
-                        {
-                        echo '<div class="header-widget">
+<div class="header-widget">
 					
 					<!-- User Menu -->
 					<div class="user-menu">
-						<div class="user-name"><span><img src="images/agent-03.jpg" alt=""></span>Hi, '.$row['name'].'!</div>
+						<div class="user-name"><span><img src="images/agent-03.jpg" alt=""></span>Hi, <?php echo $row['name']; ?>!</div>
 						<ul>
 							<li><a href="my-profile.php"><i class="sl sl-icon-user"></i> My Profile</a></li>
 							
@@ -148,19 +132,11 @@ $row = mysqli_fetch_array($query);
 					</div>
 
 					<a href="submit-property.php" class="button border">Submit Property</a>
-				</div>';
-                        }
-
-
-
-				else{
-                            echo'<div class="header-widget">
-					<a href="login-register.php" class="sign-in"><i class="fa fa-user"></i> Log In / Register</a>
-					<a href="submit-property.php" class="button border">Submit Property</a>
 				</div>
-			</div>'; 
-		}
-		?>
+                       
+
+
+
 
 
 
