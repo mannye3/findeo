@@ -2,8 +2,8 @@
 include('connect.php');
  $limit = 10;
 
-$sql4 = "SELECT * FROM property WHERE status=1   ORDER BY RAND() LIMIT 0,4 ";
-			$query6  = mysqli_query($con, $sql4);
+$sql_fea_pro = "SELECT * FROM property WHERE status=1   ORDER BY RAND() LIMIT 0,4 ";
+			$query_fea_pro  = mysqli_query($con, $sql_fea_pro);
 			/*$row3 = mysqli_fetch_array($query3);*/
 
 //Select Statement from property table(for Rent page)

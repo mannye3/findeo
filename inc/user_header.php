@@ -12,6 +12,8 @@
 ================================================== -->
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/colors/main.css" id="colors">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://cdn.ckeditor.com/4.11.3/standard/ckeditor.js"></script>
 
 </head>
 
@@ -122,7 +124,7 @@
 					
 					<!-- User Menu -->
 					<div class="user-menu">
-						<div class="user-name"><span><img src="images/agent-03.jpg" alt=""></span>Hi, <?php echo $row['name']; ?>!</div>
+						<div class="user-name"><span><?php include('core/pro-pic_header.php'); ?></span>Hi, <?php echo $row['name']; ?></div>
 						<ul>
 							<li><a href="my-profile.php"><i class="sl sl-icon-user"></i> My Profile</a></li>
 							

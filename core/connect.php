@@ -3,7 +3,7 @@ session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "neer";
+$dbname = "e3_properties";
 
 // Create connection
 $con = mysqli_connect($servername, $username, $password, $dbname);

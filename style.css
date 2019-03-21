@@ -1,0 +1,17 @@
+.container2{
+    margin: 0 auto;
+    width: 50%;
+}
+
+.content2{
+    padding: 5px;
+    margin: 0 auto;
+}
+.content2 span{
+    width: 250px;
+}
+
+.dz-message2{
+    text-align: center;
+    font-size: 28px;
+}

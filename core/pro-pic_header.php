@@ -7,7 +7,7 @@
 
    elseif ($row['image'] !=="") {
 
-   	 echo '<img style="height: 120px; width: 120px;" src="profile-pic/'.$row['image'].'">';
+   	 echo '<img  src="profile-pic/'.$row['image'].'">';
      	
      }  
 

@@ -59,7 +59,7 @@ include('inc/header.php');
                                              ?>
 				<div class="listing-item">
 
-					<a href="single-property-page-1.html" class="listing-img-container">
+					<a href="property.php?pro=<?php echo $row5_rent["property_no"]; ?>" class="listing-img-container">
 
 						<div class="listing-badges">
 							<span class="featured"><?php  echo ucwords($row5_rent["type"]) ?></span>
@@ -71,20 +71,20 @@ include('inc/header.php');
 							<span  style="float: right;"><?php echo $t_img ?> <i class="fa fa-image"></i></span>
 						</div>
 
-						<img src="images/listing-03.jpg" alt="">
+						<img src="<?php echo $row5_rent["pic"]; ?>" alt="">
 
 					</a>
 					
 					<div class="listing-content">
 
 						<div class="listing-title">
-							<h4><a href="single-property-page-1.html"><?php echo $row5_rent["title"]; ?></a></h4>
+							<h4><a href="property.php?pro=<?php echo $row5_rent["property_no"]; ?>"><?php echo $row5_rent["title"]; ?></a></h4>
 							
 								<i class="fa fa-map-marker"></i>
 								<?php echo $row5_rent["address"]; ?>. <?php echo $row5_rent["lga"]; ?>, <?php echo $row5_rent["state"]; ?>
 							</a>
 
-							<a href="single-property-page-1.html" class="details button border">Details</a>
+							<a href="property.php?pro=<?php echo $row5_rent["property_no"]; ?>" class="details button border">Details</a>
 						</div>
 
 						<ul class="listing-details">

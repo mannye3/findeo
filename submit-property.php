@@ -1,9 +1,11 @@
 <?php 
 include('core/session.php');
+include('core/user_logic.php');
+include('core/user_select.php');
 include('inc/user_header.php'); 
  ?>
 
-
+ 
 
 <!-- Titlebar
 ================================================== -->
@@ -24,13 +26,9 @@ include('inc/user_header.php');
 <div class="row">
 
 	<!-- Submit Page -->
+	<form method="post">
 	<div class="col-md-12">
 		<div class="submit-page">
-
-		<div class="notification notice large margin-bottom-55">
-			<h4>Don't Have an Account?</h4>
-			<p>If you don't have an account you can create one by entering your email address in contact details section. A password will be automatically emailed to you.</p>
-		</div>
 
 		<!-- Section -->
 		<h3>Basic Information</h3>
@@ -39,7 +37,7 @@ include('inc/user_header.php');
 			<!-- Title -->
 			<div class="form">
 				<h5>Property Title <i class="tip" data-tip-content="Type title that will also contains an unique feature of your property (e.g. renovated, air contidioned)"></i></h5>
-				<input class="search-field" type="text" value=""/>
+				<input class="search-field" type="text" name="title" />
 			</div>
 
 			<!-- Row -->
@@ -47,24 +45,29 @@ include('inc/user_header.php');
 
 				<!-- Status -->
 				<div class="col-md-6">
-					<h5>Status</h5>
-					<select class="chosen-select-no-single" >
-						<option label="blank"></option>	
-						<option>For Sale</option>
-						<option>For Rent</option>
-					</select>
+					
+					<h5>Price <i class="tip" data-tip-content="Type overall or monthly price if property is for rent"></i></h5>
+					<div class="select-input disabled-first-option">
+						<input  data-unit="Naira" name="price" type="text">
+					
+				</div>
 				</div>
 
 				<!-- Type -->
 				<div class="col-md-6">
 					<h5>Type</h5>
-					<select class="chosen-select-no-single" >
+					<select name="type" class="chosen-select-no-single" >
 						<option label="blank"></option>		
-						<option>Apartment</option>
-						<option>House</option>
-						<option>Commercial</option>
-						<option>Garage</option>
-						<option>Lot</option>
+						<option value="Bungalow">Bungalow</option>
+                         <option value="Duplex">Duplex</option>
+                          <option value="Flat">Flat</option>
+                           <option value="House">House</option>
+                            <option value="Industrial Building">Industrial Building</option>
+                             <option value="Office">Office Space</option>
+                              <option value="Land">Land</option>
+                              <option value="Shop">Shop/Showroom</option>
+                              <option value="Store Room">Store Room</option>
+                            <option value="Warehouse">Warehouse</option>
 					</select>
 				</div>
 
@@ -75,33 +78,43 @@ include('inc/user_header.php');
 			<!-- Row -->
 			<div class="row with-forms">
 
-				<!-- Price -->
-				<div class="col-md-4">
-					<h5>Price <i class="tip" data-tip-content="Type overall or monthly price if property is for rent"></i></h5>
-					<div class="select-input disabled-first-option">
-						<input type="text" data-unit="USD">
-					</div>
-				</div>
+				
 				
 				<!-- Area -->
-				<div class="col-md-4">
-					<h5>Area</h5>
-					<div class="select-input disabled-first-option">
-						<input type="text" data-unit="Sq Ft">
-					</div>
-				</div>
-
-				<!-- Rooms -->			
-				<div class="col-md-4">
-					<h5>Rooms</h5>
-					<select class="chosen-select-no-single" >
+				<div class="col-md-6">
+					<h5>Bedrooms</h5>
+					<select name="rooms" class="chosen-select-no-single" >
 						<option label="blank"></option>	
 						<option>1</option>
 						<option>2</option>
 						<option>3</option>
 						<option>4</option>
 						<option>5</option>
-						<option>More than 5</option>
+						<option>6</option>
+						<option>7</option>
+						<option>8</option>
+						<option>9</option>
+						<option>10</option>
+						<option>More than 10</option>
+					</select>
+				</div>
+
+				<!-- Rooms -->			
+				<div class="col-md-6">
+					<h5>Bathrooms</h5>
+					<select name="bathrooms"  class="chosen-select-no-single" >
+						<option label="blank"></option>	
+						<option>1</option>
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+						<option>5</option>
+						<option>6</option>
+						<option>7</option>
+						<option>8</option>
+						<option>9</option>
+						<option>10</option>
+						<option>More than 10</option>
 					</select>
 				</div>
 
@@ -110,15 +123,6 @@ include('inc/user_header.php');
 
 		</div>
 		<!-- Section / End -->
-
-
-		<!-- Section -->
-		<h3>Gallery</h3>
-		<div class="submit-section">
-			<form action="http://www.vasterad.com/file-upload" class="dropzone" ></form>
-		</div>
-		<!-- Section / End -->
-
 
 		<!-- Section -->
 		<h3>Location</h3>
@@ -128,28 +132,40 @@ include('inc/user_header.php');
 			<div class="row with-forms">
 
 				<!-- Address -->
-				<div class="col-md-6">
+				<div class="col-md-12">
 					<h5>Address</h5>
-					<input type="text">
-				</div>
-
-				<!-- City -->
-				<div class="col-md-6">
-					<h5>City</h5>
-					<input type="text">
+					
+					<input required="" type="text"  onFocus="initializeAutocomplete()" id="locality"  name="address" >
+                    <input type="hidden" name="latitude" id="latitude" placeholder="Latitude" value="" >
+                     <input type="hidden" name="longitude" id="longitude" placeholder="Longitude" value="" >
+                      <input type="hidden" name="city" id="city" placeholder="City" value="" >
 				</div>
 
 				<!-- City -->
 				<div class="col-md-6">
 					<h5>State</h5>
-					<input type="text">
+					  <select required=""  class="chosen-select-no-single"  name="state" id="state1" onchange="change_location();">
+                                             <option></option>
+                                        <?php
+                                            while ($re_st = mysqli_fetch_array($stlg)) {
+                                            echo '<option value="'.$re_st['state'].'" >
+                                            '.$re_st['state'].'</option>';
+                                                    }
+                                                    ?>
+                                                </select>
+				</div>
+
+				<!-- City -->
+				<div class="col-md-6">
+					<h5>City</h5>
+					<select required=""  name="lga" id="city2" class="form-control" name="choose-state">
+                                            <option></option>
+                                            
+                                        </select>
 				</div>
 
 				<!-- Zip-Code -->
-				<div class="col-md-6">
-					<h5>Zip-Code</h5>
-					<input type="text">
-				</div>
+				
 
 			</div>
 			<!-- Row / End -->
@@ -165,127 +181,115 @@ include('inc/user_header.php');
 			<!-- Description -->
 			<div class="form">
 				<h5>Description</h5>
-				<textarea class="WYSIWYG" name="summary" cols="40" rows="3" id="summary" spellcheck="true"></textarea>
+				<textarea name="editor1"></textarea>
+                                        <script>
+                                                CKEDITOR.replace( 'editor1' );
+                                        </script>
 			</div>
 
-			<!-- Row -->
-			<div class="row with-forms">
-
-				<!-- Age of Home -->
-				<div class="col-md-4">
-					<h5>Building Age <span>(optional)</span></h5>
-					<select class="chosen-select-no-single" >
-						<option label="blank"></option>	
-						<option>0 - 1 Years</option>
-						<option>0 - 5 Years</option>
-						<option>0 - 10 Years</option>
-						<option>0 - 20 Years</option>
-						<option>0 - 50 Years</option>
-						<option>50 + Years</option>
-					</select>
-				</div>
-
-				<!-- Beds -->
-				<div class="col-md-4">
-					<h5>Bedrooms <span>(optional)</span></h5>
-					<select class="chosen-select-no-single" >
-						<option label="blank"></option>	
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
-						<option>5</option>
-					</select>
-				</div>
-
-				<!-- Baths -->
-				<div class="col-md-4">
-					<h5>Bathrooms <span>(optional)</span></h5>
-					<select class="chosen-select-no-single" >
-						<option label="blank"></option>	
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
-						<option>5</option>
-					</select>
-				</div>
-
-			</div>
-			<!-- Row / End -->
-
-
-			<!-- Checkboxes -->
-			<h5 class="margin-top-30">Other Features <span>(optional)</span></h5>
-			<div class="checkboxes in-row margin-bottom-20">
 		
-				<input id="check-2" type="checkbox" name="check">
-				<label for="check-2">Air Conditioning</label>
-
-				<input id="check-3" type="checkbox" name="check">
-				<label for="check-3">Swimming Pool</label>
-
-				<input id="check-4" type="checkbox" name="check" >
-				<label for="check-4">Central Heating</label>
-
-				<input id="check-5" type="checkbox" name="check">
-				<label for="check-5">Laundry Room</label>	
-
-
-				<input id="check-6" type="checkbox" name="check">
-				<label for="check-6">Gym</label>
-
-				<input id="check-7" type="checkbox" name="check">
-				<label for="check-7">Alarm</label>
-
-				<input id="check-8" type="checkbox" name="check">
-				<label for="check-8">Window Covering</label>
-		
-			</div>
-			<!-- Checkboxes / End -->
 
 		</div>
 		<!-- Section / End -->
 
-
-		<!-- Section -->
-		<h3>Contact Details</h3>
-		<div class="submit-section">
-
-			<!-- Row -->
-			<div class="row with-forms">
+		<div class="row with-forms">
 
 				<!-- Name -->
 				<div class="col-md-4">
 					<h5>Name</h5>
-					<input type="text">
+					<input name="fullname" value="<?php echo $row['name'] ?>"  type="text">
 				</div>
 
 				<!-- Email -->
 				<div class="col-md-4">
 					<h5>E-Mail</h5>
-					<input type="text">
+					<input  name="email" value="<?php echo $row['email'] ?>" type="text">
 				</div>
 
 				<!-- Name -->
 				<div class="col-md-4">
 					<h5>Phone <span>(optional)</span></h5>
-					<input type="text">
+					<input name=""phone value="<?php echo $row['phone'] ?>" type="text">
+
+					 <input type="text" readonly="" value="<?php echo $row['phone'] ?>"  class="input-text" name="phone"  placeholder="Phone">
+
+                       <input type="hidden"  value="<?php echo $row['occupation'] ?>"  class="input-text" name="occupation"  placeholder="Phone">
+
+                       <input type="hidden"  value="<?php echo $row['user_code'] ?>"  class="input-text" name="user_code"  placeholder="Phone">
 				</div>
 
 			</div>
-			<!-- Row / End -->
 
-		</div>
-		<!-- Section / End -->
+
+		<!-- Section -->
+		
 
 
 		<div class="divider"></div>
-		<a href="#" class="button preview margin-top-5">Preview <i class="fa fa-arrow-circle-right"></i></a>
+		<button name="sub-pro" type="submit" class="button preview margin-top-5">Submit <i class="fa fa-arrow-circle-right"></i></button>
 
 		</div>
 	</div>
+	</form>
 
 </div>
 </div>
+
+
+                    <script type="text/javascript">
+  function initializeAutocomplete(){
+    var input = document.getElementById('locality');
+    // var options = {
+    //   types: ['(regions)'],
+    //   componentRestrictions: {country: "IN"}
+    // };
+    var options = {}
+
+    var autocomplete = new google.maps.places.Autocomplete(input, options);
+
+    google.maps.event.addListener(autocomplete, 'place_changed', function() {
+      var place = autocomplete.getPlace();
+      var lat = place.geometry.location.lat();
+      var lng = place.geometry.location.lng();
+      var placeId = place.place_id;
+      // to set city name, using the locality param
+      var componentForm = {
+        locality: 'short_name',
+      };
+      for (var i = 0; i < place.address_components.length; i++) {
+        var addressType = place.address_components[i].types[0];
+        if (componentForm[addressType]) {
+          var val = place.address_components[i][componentForm[addressType]];
+          document.getElementById("city").value = val;
+        }
+      }
+      document.getElementById("latitude").value = lat;
+      document.getElementById("longitude").value = lng;
+      document.getElementById("location_id").value = placeId;
+    });
+  }
+</script>
+ <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxkyVw9JMI0N6HBsjIKelYK337j81RNec&libraries=places&callback=initAutocomplete"
+        async defer></script>
+
+         <script>
+function change_location()
+{
+    var state1 = $("#state1").val();
+    
+       $.ajax({
+        type: "POST",
+        url: "core/get_city.php",
+        data: "state1="+state1,
+        cache: false,
+        success: function(response)
+            {
+                    //alert(response);return false;
+                $("#city2").html(response);
+            }
+            });
+    
+}
+</script>
+
 <?php include('inc/footer.php'); ?>

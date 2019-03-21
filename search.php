@@ -59,7 +59,7 @@
               ?>
 				<div class="listing-item">
 
-					<a href="single-property-page-1.html" class="listing-img-container">
+					<a href="property.php?pro=<?php echo $row_sear_pro["property_no"]; ?>" class="listing-img-container">
 
 						<div class="listing-badges">
 							<span class="featured"><?php  echo ucwords($row_sear_pro["type"]) ?></span>
@@ -74,20 +74,20 @@
 							
 						</div>
 
-						<img src="images/listing-03.jpg" alt="">
+						<img src="<?php echo $row_sear_pro["pic"]; ?>" alt="">
 
 					</a>
 					
 					<div class="listing-content">
 
 						<div class="listing-title">
-							<h4><a href="single-property-page-1.html"><?php echo $row_sear_pro["title"]; ?></a></h4>
+							<h4><a href="property.php?pro=<?php echo $row_sear_pro["property_no"]; ?>"><?php echo $row_sear_pro["title"]; ?></a></h4>
 							
 								<i class="fa fa-map-marker"></i>
 								<?php echo $row_sear_pro["address"]; ?>. <?php echo $row_sear_pro["lga"]; ?>, <?php echo $row_sear_pro["state"]; ?>
 							
 
-							<a href="single-property-page-1.html" class="details button border">Details</a>
+							<a href="property.php?pro=<?php echo $row_sear_pro["property_no"]; ?>" class="details button border">Details</a>
 						</div>
 
 						<ul class="listing-details">

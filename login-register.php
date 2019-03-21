@@ -1,5 +1,16 @@
 <?php include('core/logic.php');
-include('inc/header.php'); ?>
+include('inc/header.php');
+
+if(isset($user_check))
+{
+echo "<script language='javascript' type='text/javascript'>
+
+      window.location.href='my-profile.php';
+
+       </script>";
+}
+  
+                        ?>
 
 <!-- Titlebar
 ================================================== -->

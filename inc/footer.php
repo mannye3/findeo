@@ -140,13 +140,10 @@
 
 <!-- DropZone | Documentation: http://dropzonejs.com -->
 <script type="text/javascript" src="scripts/dropzone.js"></script>
-<script>
-  $(".dropzone").dropzone({
-    dictDefaultMessage: "<i class='sl sl-icon-plus'></i> Click here or drop files to upload",
-  });
-</script>
-
-<script type="text/javascript" src="scripts/pass.js"></script>    
+ <script src='scripts/jquery-3.2.1.min.js'></script>
+<script src="scripts/dropzone.js" type="text/javascript"></script>
+<script type="text/javascript" src="scripts/js.js"></script> 
+<script type="text/javascript" src="scripts/pass.js"></script>     
 <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/javascript" src="scripts/jquery-2.2.0.min.js"></script>
 <script type="text/javascript" src="scripts/chosen.min.js"></script>
 <script type="text/javascript" src="scripts/magnific-popup.min.js"></script>
@@ -158,6 +155,16 @@
 <script type="text/javascript" src="scripts/tooltips.min.js"></script>
 <script type="text/javascript" src="scripts/masonry.min.js"></script>
 <script type="text/javascript" src="scripts/custom.js"></script>
+
+<script src='scripts/jquery-3.2.1.min.js'></script>
+<script src="scripts/dropzone.js" type="text/javascript"></script>
+
+
+
+<script type="text/javascript" src="scripts/infobox.min.js"></script>
+<script type="text/javascript" src="scripts/markerclusterer.js"></script>
+<script type="text/javascript" src="scripts/maps.js"></script>
+
 
 
 

@@ -15,7 +15,7 @@ date_default_timezone_set("Africa/Lagos");
             $price=$_POST['price'];
             $rooms=$_POST['rooms'];
             $bathrooms=$_POST['bathrooms'];
-            $details=$_POST['details'];
+            $details=$_POST['editor1'];
             $address=$_POST['address'];
             $latitude=$_POST['latitude'];
             $longitude=$_POST['longitude'];
@@ -426,12 +426,9 @@ date_default_timezone_set("Africa/Lagos");
             $lga=$_POST['lga'];
            
           
-            
-           
-           
              $title = ucwords($title);
              $state = ucwords($state);
-              $lga = ucwords($lga);
+             $lga = ucwords($lga);
 
 
             
@@ -451,7 +448,7 @@ date_default_timezone_set("Africa/Lagos");
 
 
 
-
+ 
 
     if (isset($_POST['pro-pic'])) {
 
@@ -491,15 +488,6 @@ if(isset($_POST["message"])) {
 
     
 
-
-
-
-
-
-
-    $sql = "INSERT INTO `message`(`name`, `s_email`,`phone`, `msg`, `user_code`, `email`, `msg_date`,`status`, `num`, `msg_code`) VALUES ('".$name."','".$s_email."','".$phone."','".$msg."','".$user_code."','".$email."','".$msg_date."','1','1','".$msg_code."')";
-                $query = mysqli_query($con, $sql);
-  
 
     //$to  = strtolower(trim($_POST['email']));
           $to  = $email;
@@ -816,6 +804,7 @@ if(isset($_POST["message"])) {
 
         if (isset($_POST['change-pass'])) {
 
+               $email = trim($_POST['email']);
                $newpassword = trim($_POST['newpassword']);
                $password = trim($_POST['password']);
                $password = md5($password);
@@ -823,24 +812,14 @@ if(isset($_POST["message"])) {
 
 
 
-        $sql="SELECT * FROM users WHERE password='$password'";
+        $sql="SELECT * FROM users WHERE email='$user_check' AND  password='$password'";
 
             $result=mysqli_query($con,$sql);
-
             $row=mysqli_fetch_array($result);
-
-
             if($row['password']!=$password){
 
-              // $ermsg2 = '<div class="alert alert-danger">
-              //                   <button data-dismiss="alert" class="close">
-              //                     &times;
-              //                   </button>
-              //                   <center><strong>Password not correct</strong></center> 
-                                
-              //                 </div>';
-
-                               echo "<script>alert('Password not correct'); window.location='my-profile.php' </script>";
+          
+               echo "<script>alert('Password not correct'); window.location='change-password.php' </script>";
 
                       }
 
@@ -849,7 +828,7 @@ if(isset($_POST["message"])) {
           $sql = "UPDATE users SET password='".$newpassword."' WHERE email='$user_check' ";
           $query = mysqli_query($con, $sql);
 
-          echo "<script>alert('Update Successful!'); window.location='my-profile.php' </script>";
+          echo "<script>alert('Update Successful!'); window.location='change-password.php' </script>";
                       }
 
                     }

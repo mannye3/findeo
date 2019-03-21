@@ -23,8 +23,8 @@ include('inc/header.php');
 				<div class="search-container">
 
 					<!-- Form -->
-					<h2>Find New Home</h2>
-
+					<h2>Find your next home</h2>
+					
 					<!-- Row With Forms -->
 					<form method="get" action="search.php">
 					<div class="row with-forms">
@@ -45,12 +45,16 @@ include('inc/header.php');
 						<div class="col-md-6">
 							<div class="main-search-input">
 								<select data-placeholder="Any Type" name="type" class="chosen-select-no-single" >
-								<option value="flat">Flat</option>
-								<option value="bungalow">Bungalow</option>
-								<option value="shop">Shop</option>
-								<option value="warehouse">Warehouse</option>
-								<option value="bungalow">Bungalow</option>
-								
+								<option value="Bungalow">Bungalow</option>
+                         <option value="Duplex">Duplex</option>
+                          <option value="Flat">Flat</option>
+                           <option value="House">House</option>
+                            <option value="Industrial Building">Industrial Building</option>
+                             <option value="Office">Office Space</option>
+                              <option value="Land">Land</option>
+                              <option value="Shop">Shop/Showroom</option>
+                              <option value="Store Room">Store Room</option>
+                            <option value="Warehouse">Warehouse</option>
 							</select>
 								<button class="button" type="submit" name="search"><i class="fa fa-search"></i></button>
 							</div>
@@ -137,179 +141,45 @@ include('inc/header.php');
 		<div class="col-md-12">
 			<div class="carousel">
 
+				 <?php
+                while ($row_fea_pro = mysqli_fetch_array($query_fea_pro)) {
+                     
+                                             ?>
+
 				<!-- Listing Item -->
 				<div class="carousel-item">
 					<div class="listing-item compact">
 
-						<a href="single-property-page-1.html" class="listing-img-container">
+						<a href="property.php?pro=<?php echo $row_fea_pro["property_no"]; ?>" class="listing-img-container">
 
 							<div class="listing-badges">
-								<span class="featured">Featured</span>
-								<span>For Sale</span>
+								<span class="featured"><?php  echo ucwords($row_fea_pro["type"]) ?></span>
+								
 							</div>
 
 							<div class="listing-img-content">
-								<span class="listing-compact-title">Eagle Apartments <i>$275,000</i></span>
-
+								<span class="listing-compact-title"><?php echo $row_fea_pro["title"]; ?> <i>₦<?php  echo number_format($row_fea_pro["price"]).""; ?></i></span>
+								
 								<ul class="listing-hidden-content">
-									<li>Area <span>530 sq ft</span></li>
-									<li>Rooms <span>3</span></li>
-									<li>Beds <span>1</span></li>
+									
+									<li>Bedroom <span><?php echo $row_fea_pro["rooms"]; ?></span></li>
+									<li>Bathroom <span><?php echo $row_fea_pro["bathrooms"]; ?></span></li>
 									<li>Baths <span>1</span></li>
 								</ul>
 							</div>
 
-							<img src="images/listing-01.jpg" alt="">
+							<img src="<?php echo $row_fea_pro["pic"]; ?>" alt="">
 						</a>
 
 					</div>
 				</div>
 				<!-- Listing Item / End -->
 
-				<!-- Listing Item -->
-				<div class="carousel-item">
-					<div class="listing-item compact">
+				 <?php
+                }
+                ?>
 
-						<a href="single-property-page-2.html" class="listing-img-container">
-
-							<div class="listing-badges">
-								<span class="featured">Featured</span>
-								<span>For Sale</span>
-							</div>
-
-							<div class="listing-img-content">
-								<span class="listing-compact-title">Serene Uptown <i>$900 / monthly</i></span>
-
-								<ul class="listing-hidden-content">
-									<li>Area <span>440 sq ft</span></li>
-									<li>Rooms <span>3</span></li>
-									<li>Beds <span>1</span></li>
-									<li>Baths <span>1</span></li>
-								</ul>
-							</div>
-
-							<img src="images/listing-02.jpg" alt="">
-						</a>
-
-					</div>
-				</div>
-				<!-- Listing Item / End -->
-
-				<!-- Listing Item -->
-				<div class="carousel-item">
-					<div class="listing-item compact">
-
-						<a href="single-property-page-1.html" class="listing-img-container">
-
-							<div class="listing-badges">
-								<span class="featured">Featured</span>
-								<span>For Rent</span>
-							</div>
-
-							<div class="listing-img-content">
-								<span class="listing-compact-title">Meridian Villas <i>$1700 / monthly</i></span>
-
-								<ul class="listing-hidden-content">
-									<li>Area <span>1450 sq ft</span></li>
-									<li>Rooms <span>3</span></li>
-									<li>Beds <span>2</span></li>
-									<li>Baths <span>2</span></li>
-								</ul>
-							</div>
-
-							<img src="images/listing-03.jpg" alt="">
-						</a>
-
-					</div>
-				</div>
-				<!-- Listing Item / End -->
-
-				<!-- Listing Item -->
-				<div class="carousel-item">
-					<div class="listing-item compact">
-
-						<a href="single-property-page-3.html" class="listing-img-container">
-
-							<div class="listing-badges">
-								<span class="featured">Featured</span>
-								<span>For Sale</span>
-							</div>
-
-							<div class="listing-img-content">
-								<span class="listing-compact-title">Selway Apartments <i>$420,000</i></span>
-
-								<ul class="listing-hidden-content">
-									<li>Area <span>540 sq ft</span></li>
-									<li>Rooms <span>2</span></li>
-									<li>Beds <span>2</span></li>
-									<li>Baths <span>1</span></li>
-								</ul>
-							</div>
-
-							<img src="images/listing-04.jpg" alt="">
-						</a>
-
-					</div>
-				</div>
-				<!-- Listing Item / End -->
-
-				<!-- Listing Item -->
-				<div class="carousel-item">
-					<div class="listing-item compact">
-
-						<a href="single-property-page-2.html" class="listing-img-container">
-
-							<div class="listing-badges">
-								<span class="featured">Featured</span>
-								<span>For Sale</span>
-							</div>
-
-							<div class="listing-img-content">
-								<span class="listing-compact-title">Oak Tree Villas <i>$535,000</i></span>
-
-								<ul class="listing-hidden-content">
-									<li>Area <span>550 sq ft</span></li>
-									<li>Rooms <span>3</span></li>
-									<li>Beds <span>2</span></li>
-									<li>Baths <span>2</span></li>
-								</ul>
-							</div>
-
-							<img src="images/listing-05.jpg" alt="">
-						</a>
-
-					</div>
-				</div>
-				<!-- Listing Item / End -->
-
-				<!-- Listing Item -->
-				<div class="carousel-item">
-					<div class="listing-item compact">
-
-						<a href="single-property-page-1.html" class="listing-img-container">
-
-							<div class="listing-badges">
-								<span class="featured">Featured</span>
-								<span>For Rent</span>
-							</div>
-
-							<div class="listing-img-content">
-								<span class="listing-compact-title">Old Town Manchester <i>$500 / monthly</i></span>
-
-								<ul class="listing-hidden-content">
-									<li>Area <span>850 sq ft</span></li>
-									<li>Rooms <span>3</span></li>
-									<li>Beds <span>2</span></li>
-									<li>Baths <span>1</span></li>
-								</ul>
-							</div>
-
-							<img src="images/listing-06.jpg" alt="">
-						</a>
-
-					</div>
-				</div>
-				<!-- Listing Item / End -->
+				
 
 			</div>
 		</div>
@@ -328,71 +198,6 @@ include('inc/header.php');
 
 
 
-<!-- Container -->
-<div class="container">
-	<div class="row">
-
-		<div class="col-md-12">
-			<h3 class="headline centered margin-bottom-35 margin-top-10">Most Popular Places <span>Properties In Most Popular Places</span></h3>
-		</div>
-
-		<div class="col-md-4">
-
-			<!-- Image Box -->
-			<a href="listings-list-with-sidebar.html" class="img-box" data-background-image="images/popular-location-01.jpg">
-
-				<!-- Badge -->
-				<div class="listing-badges">
-					<span class="featured">Featured</span>
-				</div>
-
-				<div class="img-box-content visible">
-					<h4>New York </h4>
-					<span>14 Properties</span>
-				</div>
-			</a>
-
-		</div>
-
-		<div class="col-md-8">
-
-			<!-- Image Box -->
-			<a href="listings-list-with-sidebar.html" class="img-box" data-background-image="images/popular-location-02.jpg">
-				<div class="img-box-content visible">
-					<h4>Los Angeles</h4>
-					<span>24 Properties</span>
-				</div>
-			</a>
-
-		</div>
-
-		<div class="col-md-8">
-
-			<!-- Image Box -->
-			<a href="listings-list-with-sidebar.html" class="img-box" data-background-image="images/popular-location-03.jpg">
-				<div class="img-box-content visible">
-					<h4>San Francisco </h4>
-					<span>12 Properties</span>
-				</div>
-			</a>
-
-		</div>
-
-		<div class="col-md-4">
-
-			<!-- Image Box -->
-			<a href="listings-list-with-sidebar.html" class="img-box" data-background-image="images/popular-location-04.jpg">
-				<div class="img-box-content visible">
-					<h4>Miami</h4>
-					<span>9 Properties</span>
-				</div>
-			</a>
-
-		</div>
-
-	</div>
-</div>
-<!-- Container / End -->
 
 
 <section class="fullwidth border-top margin-top-55 margin-bottom-0 padding-top-60 padding-bottom-65" data-background-color="#ffffff">
@@ -448,7 +253,7 @@ include('inc/header.php');
 
 
 <!-- Flip banner -->
-<a href="listings-half-map-grid-standard.html" class="flip-banner parallax" data-background="images/flip-banner-bg.jpg" data-color="#274abb" data-color-opacity="0.9" data-img-width="2500" data-img-height="1600">
+<a href="rent.php" class="flip-banner parallax" data-background="images/flip-banner-bg.jpg" data-color="#274abb" data-color-opacity="0.9" data-img-width="2500" data-img-height="1600">
 	<div class="flip-banner-content">
 		<h2 class="flip-visible">We help people and homes find each other</h2>
 		<h2 class="flip-hidden">Browse Properties <i class="sl sl-icon-arrow-right"></i></h2>

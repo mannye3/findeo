@@ -24,6 +24,8 @@ $row = mysqli_fetch_array($query);
 ================================================== -->
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/colors/main.css" id="colors">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<link href="css/dropzone.css" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -86,7 +88,7 @@ $row = mysqli_fetch_array($query);
 				
 				<!-- Logo -->
 				<div id="logo">
-					<a href="index.html"><img src="images/logo.png" alt=""></a>
+					<a href="index.php"><img src="images/logo.png" alt=""></a>
 				</div>
 
 
@@ -132,15 +134,30 @@ $row = mysqli_fetch_array($query);
 			<div class="right-side">
 
 				<?php
+                    if(!isset($user_check))
+                        { 
+                        	?>
+
+                       <div class="header-widget">
+					<a href="login-register.php" class="sign-in"><i class="fa fa-user"></i> Log In / Register</a>
+					<a href="submit-property.php" class="button border">Submit Property</a>
+				</div>
+			</div>
+                       <?php 
+                        } ?>
+
+
+
+                        <?php
                     if(isset($user_check))
-                        {
-                        echo '<div class="header-widget">
-					
-					<!-- User Menu -->
+                        { 
+                        	?>
+
+                        <div class="header-widget">
 					<div class="user-menu">
-						<div class="user-name"><span><img src="images/agent-03.jpg" alt=""></span>Hi, '.$row['name'].'!</div>
+						<div class="user-name"><span><?php include('core/pro-pic_header.php'); ?></span>Hi, <?php echo $row['name']; ?></div>
 						<ul>
-							<li><a href="my-profile.php"><i class="sl sl-icon-user"></i> My Profile</a></li>
+							<li><a href="my-profile.php"><i class="sl sl-icon-user"></i> Myll Profile</a></li>
 							
 							<li><a href="my-properties.php"><i class="sl sl-icon-docs"></i> My Properties</a></li>
 							<li><a href="core/logout.php"><i class="sl sl-icon-power"></i> Log Out</a></li>
@@ -148,19 +165,12 @@ $row = mysqli_fetch_array($query);
 					</div>
 
 					<a href="submit-property.php" class="button border">Submit Property</a>
-				</div>';
-                        }
-
-
-
-				else{
-                            echo'<div class="header-widget">
-					<a href="login-register.php" class="sign-in"><i class="fa fa-user"></i> Log In / Register</a>
-					<a href="submit-property.php" class="button border">Submit Property</a>
 				</div>
-			</div>'; 
-		}
-		?>
+                       
+                       <?php 
+                        } ?>
+
+						
 
 
 
