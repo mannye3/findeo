@@ -74,7 +74,7 @@
 							
 						</div>
 
-						<img src="<?php echo $row_sear_pro["pic"]; ?>" alt="">
+						<img src="uploads/<?php echo $row_sear_pro["pic"]; ?>" alt="">
 
 					</a>
 					

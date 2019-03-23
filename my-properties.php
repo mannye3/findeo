@@ -79,8 +79,8 @@ include('inc/user_header.php');
 					</td>
 					<td class="expire-date"><?php echo $rw5["upload_date"]; ?></td>
 					<td class="action">
-						<a href="#"><i class="fa fa-pencil"></i> Edit</a>
-						
+						<a href="edit-property.php?id=<?php echo $rw5["id"]; ?>"><i class="fa fa-pencil"></i> Edit</a>
+						<a href="edit-pictures.php?pro=<?php echo $rw5["property_no"]; ?>"><i class="fa fa-image"></i> Edit Pictures</a>
 						<a href="core/delete_pro.php?del_pro=<?php echo $rw5["property_no"]; ?>" class="delete"  onclick="return confirm('Are you sure you want to DELETE PROPERTY ?')"  data-type="confirm" class="delete"><i class="fa fa-remove"></i> Delete</a>
 					</td>
 				</tr>

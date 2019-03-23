@@ -41,7 +41,7 @@ $row_pro = mysqli_fetch_array($query_pro);
 		
 		<!-- Section -->
 		
- <?php echo $row_pro['property_no'] ?>
+
 		<div class='content2'>
             <form action="upload.php" class="dropzone" id="myAwesomeDropzone"> 
             </form>  

@@ -409,16 +409,14 @@ date_default_timezone_set("Africa/Lagos");
  
 
 
-
-     if (isset($_POST['upt-pro'])) {
+if (isset($_POST['upt-pro'])) {
 
             $title=$_POST['title'];
             $type=$_POST['type'];
-            $purpose=$_POST['purpose'];
             $price=$_POST['price'];
             $rooms=$_POST['rooms'];
             $bathrooms=$_POST['bathrooms'];
-            $details=$_POST['details'];
+            $details=$_POST['editor1'];
             $address=$_POST['address'];
             $latitude=$_POST['latitude'];
             $longitude=$_POST['longitude'];
@@ -426,9 +424,12 @@ date_default_timezone_set("Africa/Lagos");
             $lga=$_POST['lga'];
            
           
+            
+           
+           
              $title = ucwords($title);
              $state = ucwords($state);
-             $lga = ucwords($lga);
+              $lga = ucwords($lga);
 
 
             
@@ -436,7 +437,7 @@ date_default_timezone_set("Africa/Lagos");
              
               
               
-                $sql = "UPDATE property SET  title='".$title."',  type='".$type."',  purpose='".$purpose."',  price='".$price."',  rooms='".$rooms."', bathrooms='".$bathrooms."', details='".$details."', address='".$address."', latitude='".$latitude."', longitude='".$longitude."', state='".$state."', lga='".$lga."' WHERE email='$user_check' ";
+                $sql = "UPDATE property SET  title='".$title."',  type='".$type."', price='".$price."',  rooms='".$rooms."', bathrooms='".$bathrooms."', details='".$details."', address='".$address."', latitude='".$latitude."', longitude='".$longitude."', state='".$state."', lga='".$lga."' WHERE email='$user_check'";
                   $query = mysqli_query($con, $sql);
 
                      echo "<script>alert('Update Successful!!'); window.location='my-properties.php'</script>";
@@ -445,7 +446,6 @@ date_default_timezone_set("Africa/Lagos");
 
 
             }
-
 
 
  

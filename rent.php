@@ -71,7 +71,7 @@ include('inc/header.php');
 							<span  style="float: right;"><?php echo $t_img ?> <i class="fa fa-image"></i></span>
 						</div>
 
-						<img src="<?php echo $row5_rent["pic"]; ?>" alt="">
+						<img src="uploads/<?php echo $row5_rent["pic"]; ?>" alt="">
 
 					</a>
 					

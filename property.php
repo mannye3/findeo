@@ -29,7 +29,7 @@ include('inc/header.php');
 				</div>
 
 				<div class="property-pricing">
-					<div class="property-price">₦<?php  echo number_format($row_pro_d["price"]).""; ?></div>
+					<div class="property-price">₦<?php  echo number_format($row_pro_d["price"]) ?></div>
 					
 				</div>
 
@@ -140,7 +140,7 @@ include('inc/header.php');
 						<div class="agent-title">
 							<div class="agent-photo"><img src="images/user.jpg" alt="" /></div>
 							<div class="agent-details">
-								<h4><a href="#"><?php echo $row_pro_d["fullname"] ?></a></h4>
+								<h4><a href="agent.php?agent=<?php echo $row_pro_d["user_code"]; ?>"><?php echo $row_pro_d["fullname"] ?></a></h4>
 								<span><i class="sl sl-icon-call-in"></i>(123) 123-456</span>
 							</div>
 							<div class="clearfix"></div>
@@ -195,7 +195,7 @@ include('inc/header.php');
 								</ul>
 							</div>
 
-							<img src="<?php echo $row_fea_pro["pic"]; ?>" alt="">
+							<img width="333" height="222" src="uploads/<?php echo $row_fea_pro["pic"]; ?>" alt="">
 						</a>
 
 					</div>

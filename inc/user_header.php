@@ -76,7 +76,7 @@
 				
 				<!-- Logo -->
 				<div id="logo">
-					<a href="index.html"><img src="images/logo.png" alt=""></a>
+					<a href="index.php"><img src="images/logo.png" alt=""></a>
 				</div>
 
 
@@ -125,16 +125,41 @@
 					<!-- User Menu -->
 					<div class="user-menu">
 						<div class="user-name"><span><?php include('core/pro-pic_header.php'); ?></span>Hi, <?php echo $row['name']; ?></div>
+
+						<?php
+   if($row['type']=='Agent'){
+
+?>
 						<ul>
 							<li><a href="my-profile.php"><i class="sl sl-icon-user"></i> My Profile</a></li>
 							
 							<li><a href="my-properties.php"><i class="sl sl-icon-docs"></i> My Properties</a></li>
 							<li><a href="core/logout.php"><i class="sl sl-icon-power"></i> Log Out</a></li>
 						</ul>
+						
+
 					</div>
 
 					<a href="submit-property.php" class="button border">Submit Property</a>
 				</div>
+				<?php } ?>
+
+
+				<?php
+   if($row['type']=='User'){
+
+?>
+						<ul>
+							<li><a href="my-profile.php"><i class="sl sl-icon-user"></i> My Profile</a></li>
+							
+							<li><a href="core/logout.php"><i class="sl sl-icon-power"></i> Log Out</a></li>
+						</ul>
+						
+
+					</div>
+
+				</div>
+				<?php } ?>
                        
 
 

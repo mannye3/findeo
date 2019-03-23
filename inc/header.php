@@ -66,8 +66,8 @@ $row = mysqli_fetch_array($query);
 				<ul class="social-icons">
 					<li><a class="facebook" href="#"><i class="icon-facebook"></i></a></li>
 					<li><a class="twitter" href="#"><i class="icon-twitter"></i></a></li>
-					<li><a class="gplus" href="#"><i class="icon-gplus"></i></a></li>
-					<li><a class="pinterest" href="#"><i class="icon-pinterest"></i></a></li>
+					<li><a class="instagram" href="#"><i class="icon-instagram"></i></a></li>
+					
 				</ul>
 
 			</div>
@@ -157,14 +157,18 @@ $row = mysqli_fetch_array($query);
 					<div class="user-menu">
 						<div class="user-name"><span><?php include('core/pro-pic_header.php'); ?></span>Hi, <?php echo $row['name']; ?></div>
 						<ul>
-							<li><a href="my-profile.php"><i class="sl sl-icon-user"></i> Myll Profile</a></li>
+							<li><a href="my-profile.php"><i class="sl sl-icon-user"></i> My Profile</a></li>
 							
-							<li><a href="my-properties.php"><i class="sl sl-icon-docs"></i> My Properties</a></li>
+							<?php if($row['type']=='Agent'){
+						echo '<li><a href="my-properties.php"><i class="sl sl-icon-docs"></i> My Properties</a></li>';
+					  } ?>
 							<li><a href="core/logout.php"><i class="sl sl-icon-power"></i> Log Out</a></li>
 						</ul>
 					</div>
-
-					<a href="submit-property.php" class="button border">Submit Property</a>
+					<?php if($row['type']=='Agent'){
+						echo '<a href="submit-property.php" class="button border">Submit Property</a>';
+					  } ?>
+					
 				</div>
                        
                        <?php 

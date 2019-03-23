@@ -7,11 +7,10 @@ $rowid = $_GET['id'];
 
             $title=$_POST['title'];
             $type=$_POST['type'];
-            $purpose=$_POST['purpose'];
             $price=$_POST['price'];
             $rooms=$_POST['rooms'];
             $bathrooms=$_POST['bathrooms'];
-            $details=$_POST['details'];
+            $details=$_POST['editor1'];
             $address=$_POST['address'];
             $latitude=$_POST['latitude'];
             $longitude=$_POST['longitude'];
@@ -32,7 +31,7 @@ $rowid = $_GET['id'];
              
               
               
-                $sql = "UPDATE property SET  title='".$title."',  type='".$type."',  purpose='".$purpose."',  price='".$price."',  rooms='".$rooms."', bathrooms='".$bathrooms."', details='".$details."', address='".$address."', latitude='".$latitude."', longitude='".$longitude."', state='".$state."', lga='".$lga."' WHERE id=$rowid";
+                $sql = "UPDATE property SET  title='".$title."',  type='".$type."', price='".$price."',  rooms='".$rooms."', bathrooms='".$bathrooms."', details='".$details."', address='".$address."', latitude='".$latitude."', longitude='".$longitude."', state='".$state."', lga='".$lga."' WHERE id=$rowid";
                   $query = mysqli_query($con, $sql);
 
                      echo "<script>alert('Update Successful!!'); window.location='../my-properties.php'</script>";

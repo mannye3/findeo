@@ -168,7 +168,7 @@ include('inc/header.php');
 								</ul>
 							</div>
 
-							<img src="<?php echo $row_fea_pro["pic"]; ?>" alt="">
+							<img width="333" height="222" src="uploads/<?php echo $row_fea_pro["pic"]; ?>" alt="">
 						</a>
 
 					</div>

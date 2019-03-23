@@ -48,8 +48,8 @@ include('inc/header.php'); ?>
 						<div class="agent">
 
 							<div class="agent-avatar">
-								<a href="agent.php">
-									<img src="images/agent-01.jpg" alt="">
+								<a href="agent.php?agent=<?php echo $row_agent["user_code"]; ?>">
+									<?php include('core/pro-pic_agent.php') ?>
 									<span class="view-profile-btn">View Profile</span>
 								</a>
 							</div>
@@ -60,10 +60,10 @@ include('inc/header.php'); ?>
 									<!-- <span>Agent In New York</span> -->
 								</div>
 
-								<ul class="agent-contact-details">
+								<!-- <ul class="agent-contact-details">
 									<li><i class="sl sl-icon-call-in"></i><?php echo $row_agent["phone"]; ?></li><br>
 									<li><i class="fa fa-envelope-o "></i><a href="#"><span class="__cf_email__" data-cfemail="3c4853517c59445d514c5059125f5351"><?php echo $row_agent["email"]; ?></span></a></li>
-								</ul>
+								</ul> -->
 
 								<!-- <ul class="social-icons">
 									<li><a class="facebook" href="#"><i class="icon-facebook"></i></a></li>
@@ -85,6 +85,27 @@ include('inc/header.php'); ?>
 
 				</div>
 				<!-- Agents Container / End -->
+				<!-- Pagination -->
+			<div class="pagination-container margin-top-20">
+				<nav class="pagination">
+					<?php  
+                        $sql = "SELECT COUNT(id) FROM users";  
+                        $rs_result = mysqli_query($con, $sql);  
+                        $row = mysqli_fetch_row($rs_result);  
+                        $total_records = $row[0];  
+                        $total_pages = ceil($total_records / $limit);  
+                        $pagLink = '<div class="pagination-box hidden-mb-45 text-center">
+                                 <nav aria-label="Page navigation example">
+                        <ul class="pagination">';  
+                        for ($i=1; $i<=$total_pages; $i++) {  
+                                     $pagLink .= "<li class=''><a class='current-page' href='agents.php?page=".$i."'>".$i."</a></li>";  
+                        };  
+                        echo $pagLink . " </ul>
+                        </div>";  
+                        ?>
+					
+			</div>
+			<!-- Pagination / End -->
 
 			</div>
 		</div>

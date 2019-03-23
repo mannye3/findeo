@@ -1,7 +1,30 @@
 <div class="col-md-4">
 			<div class="sidebar left">
 
+ <?php
+   if($row['type']=='User'){
+
+?>
 				<div class="my-account-nav-container">
+					
+					<ul class="my-account-nav">
+						<li class="sub-nav-title">Manage Account</li>
+						<li><a href="my-profile.php" class="current"><i class="sl sl-icon-user"></i> My Profile</a></li>
+						<li><a href="change-password.php"><i class="sl sl-icon-lock"></i> Change Password</a></li>
+						<li><a href="core/logout.php"><i class="sl sl-icon-power"></i> Log Out</a></li>
+						
+					</ul>
+					
+					
+
+				</div>
+			<?php } ?>
+
+<?php
+   if($row['type']=='Agent'){
+
+?>
+<div class="my-account-nav-container">
 					
 					<ul class="my-account-nav">
 						<li class="sub-nav-title">Manage Account</li>
@@ -21,6 +44,7 @@
 					</ul>
 
 				</div>
+			<?php } ?>
 
 			</div>
 		</div>

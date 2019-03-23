@@ -3,7 +3,12 @@ include('core/session.php');
 include('core/user_logic.php');
 include('core/user_select.php');
 include('inc/user_header.php'); 
- ?>
+
+$edi_pro = "SELECT * FROM property  WHERE id=".$_GET['id'];
+$q_edi_pro = mysqli_query($con, $edi_pro);
+$row_edi_pro = mysqli_fetch_array($q_edi_pro);
+?>
+
 
  
 
@@ -13,7 +18,7 @@ include('inc/user_header.php');
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<h2><i class="fa fa-plus-circle"></i> Add Property</h2>
+				<h2><i class="fa fa-plus-circle"></i> Edit Property</h2>
 			</div>
 		</div>
 	</div>
@@ -37,7 +42,7 @@ include('inc/user_header.php');
 			<!-- Title -->
 			<div class="form">
 				<h5>Property Title <i class="tip" data-tip-content="Type title that will also contains an unique feature of your property (e.g. renovated, air contidioned)"></i></h5>
-				<input class="search-field" type="text" name="title" />
+				<input class="search-field" value="<?php echo $row_edi_pro['title'] ?>" type="text" name="title" />
 			</div>
 
 			<!-- Row -->
@@ -48,7 +53,7 @@ include('inc/user_header.php');
 					
 					<h5>Price <i class="tip" data-tip-content="Type overall or monthly price if property is for rent"></i></h5>
 					<div class="select-input disabled-first-option">
-						<input  data-unit="Naira" name="price" type="text">
+						<input value="<?php echo $row_edi_pro['price'] ?>"  data-unit="Naira" name="price" type="text">
 					
 				</div>
 				</div>
@@ -57,7 +62,7 @@ include('inc/user_header.php');
 				<div class="col-md-6">
 					<h5>Type</h5>
 					<select name="type" class="chosen-select-no-single" >
-						<option label="blank"></option>		
+						<option value="<?php echo $row_edi_pro['type'] ?>"><?php echo $row_edi_pro['type'] ?></option>		
 						<option value="Bungalow">Bungalow</option>
                          <option value="Duplex">Duplex</option>
                           <option value="Flat">Flat</option>
@@ -84,7 +89,7 @@ include('inc/user_header.php');
 				<div class="col-md-6">
 					<h5>Bedrooms</h5>
 					<select name="rooms" class="chosen-select-no-single" >
-						<option label="blank"></option>	
+						<option value="<?php echo $row_edi_pro['rooms'] ?>"><?php echo $row_edi_pro['rooms'] ?></option>	
 						<option>1</option>
 						<option>2</option>
 						<option>3</option>
@@ -103,7 +108,7 @@ include('inc/user_header.php');
 				<div class="col-md-6">
 					<h5>Bathrooms</h5>
 					<select name="bathrooms"  class="chosen-select-no-single" >
-						<option label="blank"></option>	
+						<option value="<?php echo $row_edi_pro['bathrooms'] ?>"><?php echo $row_edi_pro['bathrooms'] ?></option>	
 						<option>1</option>
 						<option>2</option>
 						<option>3</option>
@@ -135,9 +140,9 @@ include('inc/user_header.php');
 				<div class="col-md-12">
 					<h5>Address</h5>
 					
-					<input required="" type="text"  onFocus="initializeAutocomplete()" id="locality"  name="address" >
-                    <input type="hidden" name="latitude" id="latitude" placeholder="Latitude" value="" >
-                     <input type="hidden" name="longitude" id="longitude" placeholder="Longitude" value="" >
+					<input required="" value="<?php echo $row_edi_pro['address'] ?>" type="text"  onFocus="initializeAutocomplete()" id="locality"  name="address" >
+                    <input type="hidden" value="<?php echo $row_edi_pro['latitude'] ?>" name="latitude" id="latitude" placeholder="Latitude" value="" >
+                     <input type="hidden" value="<?php echo $row_edi_pro['longitude'] ?>" name="longitude" id="longitude" placeholder="Longitude" value="" >
                       <input type="hidden" name="city" id="city" placeholder="City" value="" >
 				</div>
 
@@ -145,7 +150,7 @@ include('inc/user_header.php');
 				<div class="col-md-6">
 					<h5>State</h5>
 					  <select required=""  class="chosen-select-no-single"  name="state" id="state1" onchange="change_location();">
-                                             <option></option>
+                                             <option value="<?php echo $row_edi_pro['state'] ?>"><?php echo $row_edi_pro['state'] ?></option>
                                         <?php
                                             while ($re_st = mysqli_fetch_array($stlg)) {
                                             echo '<option value="'.$re_st['state'].'" >
@@ -158,8 +163,8 @@ include('inc/user_header.php');
 				<!-- City -->
 				<div class="col-md-6">
 					<h5>City</h5>
-					<select required=""  name="lga" id="city2" class="form-control" name="choose-state">
-                                            <option></option>
+					<select required=""   name="lga" id="city2" class="form-control" name="choose-state">
+                                            <option value="<?php echo $row_edi_pro['lga'] ?>"><?php echo $row_edi_pro['lga'] ?></option>
                                             
                                         </select>
 				</div>
@@ -181,7 +186,7 @@ include('inc/user_header.php');
 			<!-- Description -->
 			<div class="form">
 				<h5>Description</h5>
-				<textarea name="editor1"></textarea>
+				<textarea name="editor1"><?php echo $row_edi_pro['details'] ?></textarea>
                                         <script>
                                                 CKEDITOR.replace( 'editor1' );
                                         </script>
@@ -192,41 +197,11 @@ include('inc/user_header.php');
 		</div>
 		<!-- Section / End -->
 
-		<div class="row with-forms">
-
-				<!-- Name -->
-				<div class="col-md-4">
-					<h5>Name</h5>
-					<input name="fullname" value="<?php echo $row['name'] ?>"  type="text">
-				</div>
-
-				<!-- Email -->
-				<div class="col-md-4">
-					<h5>E-Mail</h5>
-					<input  name="email" value="<?php echo $row['email'] ?>" type="text">
-				</div>
-
-				<!-- Name -->
-				<div class="col-md-4">
-					<h5>Phone <span>(optional)</span></h5>
-					<input name=""phone value="<?php echo $row['phone'] ?>" type="text">
-
-					
-
-                       <input type="hidden"  value="<?php echo $row['occupation'] ?>"  class="input-text" name="occupation"  placeholder="Phone">
-
-                       <input type="hidden"  value="<?php echo $row['user_code'] ?>"  class="input-text" name="user_code"  placeholder="Phone">
-				</div>
-
-			</div>
-
-
-		<!-- Section -->
 		
 
 
 		<div class="divider"></div>
-		<button name="sub-pro" type="submit" class="button preview margin-top-5">Submit <i class="fa fa-arrow-circle-right"></i></button>
+		<button name="upt-pro" type="submit" class="button preview margin-top-5">Submit <i class="fa fa-arrow-circle-right"></i></button>
 
 		</div>
 	</div>

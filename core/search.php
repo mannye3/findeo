@@ -21,7 +21,7 @@ $sql_sear_pro = "SELECT * FROM property WHERE  (`address` LIKE '%".$p_location."
 
     $num_rows = mysqli_num_rows($query_sear_pro);
 
-    $per_page = 10;   // Per Page
+    $per_page = 5;   // Per Page
     $page  = 1;
     
     if(isset($_GET["Page"]))
