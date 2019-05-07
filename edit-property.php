@@ -31,7 +31,7 @@ $row_edi_pro = mysqli_fetch_array($q_edi_pro);
 <div class="row">
 
 	<!-- Submit Page -->
-	<form method="post">
+	<form method="post" action="core/edit_logic.php?id=<?php echo $row_edi_pro["id"]; ?>">
 	<div class="col-md-12">
 		<div class="submit-page">
 
@@ -49,7 +49,7 @@ $row_edi_pro = mysqli_fetch_array($q_edi_pro);
 			<div class="row with-forms">
 
 				<!-- Status -->
-				<div class="col-md-6">
+				<div class="col-md-4">
 					
 					<h5>Price <i class="tip" data-tip-content="Type overall or monthly price if property is for rent"></i></h5>
 					<div class="select-input disabled-first-option">
@@ -59,7 +59,7 @@ $row_edi_pro = mysqli_fetch_array($q_edi_pro);
 				</div>
 
 				<!-- Type -->
-				<div class="col-md-6">
+				<div class="col-md-4">
 					<h5>Type</h5>
 					<select name="type" class="chosen-select-no-single" >
 						<option value="<?php echo $row_edi_pro['type'] ?>"><?php echo $row_edi_pro['type'] ?></option>		
@@ -73,6 +73,17 @@ $row_edi_pro = mysqli_fetch_array($q_edi_pro);
                               <option value="Shop">Shop/Showroom</option>
                               <option value="Store Room">Store Room</option>
                             <option value="Warehouse">Warehouse</option>
+					</select>
+				</div>
+
+
+				<div class="col-md-4">
+					<h5>Purpose</h5>
+					<select required="" name="purpose" class="chosen-select-no-single" >
+						<option value="<?php echo $row_edi_pro['purpose'] ?>"><?php echo $row_edi_pro['purpose'] ?></option>
+						<option value="Rent">Rent</option>
+                         <option value="Sale">Sale</option>
+                          
 					</select>
 				</div>
 
@@ -137,6 +148,37 @@ $row_edi_pro = mysqli_fetch_array($q_edi_pro);
 			<div class="row with-forms">
 
 				<!-- Address -->
+				
+
+				<!-- state -->
+				<div class="col-md-6">
+					<h5>State</h5>
+					 <select class="form-control"  name="state" id="state" onchange="change_location();">
+                                <option value="<?php echo $row_edi_pro['state'] ?>"><?php echo $row_edi_pro['state'] ?></option>
+                                        <?php
+                                      while ($re_st = mysqli_fetch_array($stlg)) {
+                                      echo '<option value="'.$re_st['name'].'" >
+                                      '.$re_st['name'].'</option>';
+                                               }
+                                             ?>
+                                      </select>
+
+
+					 
+				</div>
+
+				<!-- City -->
+				<div class="col-md-6">
+					<h5>City</h5>
+					<select required="" name="lga" id="city" class="form-control" name="choose-state">
+                         <option value="<?php echo $row_edi_pro['lga'] ?>"><?php echo $row_edi_pro['lga'] ?></option>
+                              </select>
+
+					
+				</div>
+
+				<!-- Zip-Code -->
+
 				<div class="col-md-12">
 					<h5>Address</h5>
 					
@@ -145,31 +187,6 @@ $row_edi_pro = mysqli_fetch_array($q_edi_pro);
                      <input type="hidden" value="<?php echo $row_edi_pro['longitude'] ?>" name="longitude" id="longitude" placeholder="Longitude" value="" >
                       <input type="hidden" name="city" id="city" placeholder="City" value="" >
 				</div>
-
-				<!-- City -->
-				<div class="col-md-6">
-					<h5>State</h5>
-					  <select required=""  class="chosen-select-no-single"  name="state" id="state1" onchange="change_location();">
-                                             <option value="<?php echo $row_edi_pro['state'] ?>"><?php echo $row_edi_pro['state'] ?></option>
-                                        <?php
-                                            while ($re_st = mysqli_fetch_array($stlg)) {
-                                            echo '<option value="'.$re_st['state'].'" >
-                                            '.$re_st['state'].'</option>';
-                                                    }
-                                                    ?>
-                                                </select>
-				</div>
-
-				<!-- City -->
-				<div class="col-md-6">
-					<h5>City</h5>
-					<select required=""   name="lga" id="city2" class="form-control" name="choose-state">
-                                            <option value="<?php echo $row_edi_pro['lga'] ?>"><?php echo $row_edi_pro['lga'] ?></option>
-                                            
-                                        </select>
-				</div>
-
-				<!-- Zip-Code -->
 				
 
 			</div>
@@ -247,24 +264,25 @@ $row_edi_pro = mysqli_fetch_array($q_edi_pro);
  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxkyVw9JMI0N6HBsjIKelYK337j81RNec&libraries=places&callback=initAutocomplete"
         async defer></script>
 
-         <script>
+   <script> 
 function change_location()
 {
-    var state1 = $("#state1").val();
+    var state = $("#state").val();
     
        $.ajax({
         type: "POST",
         url: "core/get_city.php",
-        data: "state1="+state1,
+        data: "state="+state,
         cache: false,
         success: function(response)
             {
                     //alert(response);return false;
-                $("#city2").html(response);
+                $("#city").html(response);
             }
             });
     
 }
 </script>
+
 
 <?php include('inc/footer.php'); ?>

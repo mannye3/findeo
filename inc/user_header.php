@@ -4,16 +4,21 @@
 
 <!-- Basic Page Needs
 ================================================== -->
-<title>Findeo</title>
+<title>Real Estate and Property in Nigeria for Rent - Prifa.com.ng</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<meta name="description" content="Prifa.com.ng is Nigerian real estate and property listing website with property and houses in Nigeria for rent and for sale. We are the online real estate destination for property sales and rentals in Nigeria with properties including homes, houses, land, shops, offices and other commercial properties to buy or rent." />
+<meta property="og:type" content="website" />
+<meta name="google-site-verification" content="Q84fHqoLB0pIVJ-foOCC0tS31YH5Kh_tHHp6Xc_UgqU" />
 
 <!-- CSS
 ================================================== -->
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/colors/main.css" id="colors">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<script src="https://cdn.ckeditor.com/4.11.3/standard/ckeditor.js"></script>
+<link href="css/dropzone.css" rel="stylesheet" type="text/css">
+<link href="images/icon.jpg" type="img/x-icon" rel="shortcut icon">
 
 </head>
 
@@ -21,6 +26,7 @@
 
 <!-- Wrapper -->
 <div id="wrapper">
+
 
 
 
@@ -38,8 +44,8 @@
 
 				<!-- Top bar -->
 				<ul class="top-bar-menu">
-					<li><i class="fa fa-phone"></i> (123) 123-456 </li>
-					<li><i class="fa fa-envelope"></i> <a href="#"><span class="__cf_email__" data-cfemail="c9a6afafa0aaac89acb1a8a4b9a5ace7aaa6a4">[email&#160;protected]</span></a></li>
+					<li><i class="fa fa-phone"></i>+2349073627352 </li>
+					<li><i class="fa fa-envelope"></i> <a href="#"><span class="__cf_email__">info@prifa.com.ng</span></a></li>
 					
 				</ul>
 
@@ -54,10 +60,9 @@
 				<ul class="social-icons">
 					<li><a class="facebook" href="#"><i class="icon-facebook"></i></a></li>
 					<li><a class="twitter" href="#"><i class="icon-twitter"></i></a></li>
-					<li><a class="gplus" href="#"><i class="icon-gplus"></i></a></li>
-					<li><a class="pinterest" href="#"><i class="icon-pinterest"></i></a></li>
+					<li><a class="instagram" target="blank_" href="https://www.instagram.com/prifa_ng"><i class="icon-instagram"></i></a></li>
+					
 				</ul>
-
 			</div>
 			<!-- Left Side Content / End -->
 
@@ -98,9 +103,14 @@
 							
 						</li>
 
-						<li><a href="rent.php">Rent</a>
+						<li><a href="rent.php">For Rent</a>
 							
 						</li>
+
+						<li><a href="sale.php">For Sale</a>
+							
+						</li>
+
 
 						<li><a href="agents.php">Agents</a>
 							
@@ -120,7 +130,7 @@
 
 
 			<div class="right-side">
-<div class="header-widget">
+				<div class="header-widget">
 					
 					<!-- User Menu -->
 					<div class="user-menu">

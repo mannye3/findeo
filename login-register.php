@@ -19,13 +19,13 @@ echo "<script language='javascript' type='text/javascript'>
 		<div class="row">
 			<div class="col-md-12">
 
-				<h2>Log In & Register</h2>
+				<h2>Login Or Register</h2>
 				
 				<!-- Breadcrumbs -->
 				<nav id="breadcrumbs">
 					<ul>
 						<li><a href="#">Home</a></li>
-						<li>Log In & Register</li>
+						<li>Login Or Register</li>
 					</ul>
 				</nav>
 
@@ -52,9 +52,7 @@ echo "<script language='javascript' type='text/javascript'>
 	<div class="my-account style-1 margin-top-5 margin-bottom-40">
 
 		<ul class="tabs-nav">
-			 <?php echo $scmsg; ?>
-                        <?php echo $ermsg; ?>
-                        <?php echo $ermsgphone  ?>
+			 <?php echo $alert; ?>
 			<li class=""><a href="#tab1">Log In</a></li>
 			<li><a href="#tab2">Register</a></li>
 		</ul>
@@ -75,19 +73,20 @@ echo "<script language='javascript' type='text/javascript'>
 					<p class="form-row form-row-wide">
 						<label for="password">Password:
 							<i class="im im-icon-Lock-2"></i>
-							<input class="input-text" name="password" type="password"  />
+							<input class="input-text" name="password" type="password"/>
 						</label>
 					</p>
 
+					
 					<p class="form-row">
-						<input type="submit" name="login" class="button border margin-top-10" name="login" value="Login" />
-
+						<input type="submit" name="login" class="button border margin-top-10" name="login" value="Login"/>
+						
 						<label for="rememberme" class="rememberme">
 						<input name="rememberme" type="checkbox" id="rememberme" value="forever" /> Remember Me</label>
 					</p>
 
 					<p class="lost_password">
-						<a href="#" >Lost Your Password?</a>
+						<a href="forget-password.php" >Lost Your Password?</a>
 					</p>
 					
 				</form>
@@ -145,6 +144,30 @@ echo "<script language='javascript' type='text/javascript'>
 					</select>
 					</label>
 				</p>
+
+				<p class="form-row">
+					<input type="submit" name="register"  class="button border fw margin-top-10" name="register" value="Register" />
+				</p>
+
+				</form>
+			</div>
+
+			<div class="tab-content" id="tab3" style="display: none;">
+
+				<form method="post" class="register">
+					
+				
+					
+				<p class="form-row form-row-wide">
+					<label for="email2">Email Address:
+						<i class="im im-icon-Mail"></i>
+						<input required="" type="text" class="input-text" name="email"  value="" />
+					</label>
+				</p>
+
+
+			
+			
 
 				<p class="form-row">
 					<input type="submit" name="register"  class="button border fw margin-top-10" name="register" value="Register" />

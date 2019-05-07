@@ -1,5 +1,18 @@
 <?php 
 include('core/session.php');
+
+$sql_ver = "SELECT * FROM users WHERE email='$user_check' ";
+$query_ver  = mysqli_query($con, $sql_ver);
+$row_ver = mysqli_fetch_array($query_ver);
+
+
+
+if($row_ver['user_status']=='')
+{
+echo "<script language='javascript' type='text/javascript'>
+            window.location.href='verify.php';
+                </script>";
+}
 include('core/user_logic.php');
 include('core/user_select.php');
 include('inc/user_header.php'); 
@@ -37,24 +50,24 @@ include('inc/user_header.php');
 			<!-- Title -->
 			<div class="form">
 				<h5>Property Title <i class="tip" data-tip-content="Type title that will also contains an unique feature of your property (e.g. renovated, air contidioned)"></i></h5>
-				<input class="search-field" type="text" name="title" />
+				<input required="" class="search-field" type="text" name="title" />
 			</div>
 
 			<!-- Row -->
 			<div class="row with-forms">
 
 				<!-- Status -->
-				<div class="col-md-6">
+				<div class="col-md-4">
 					
 					<h5>Price <i class="tip" data-tip-content="Type overall or monthly price if property is for rent"></i></h5>
 					<div class="select-input disabled-first-option">
-						<input  data-unit="Naira" name="price" type="text">
+						<input required="" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" data-unit="Naira" name="price" type="text">
 					
 				</div>
 				</div>
 
 				<!-- Type -->
-				<div class="col-md-6">
+				<div class="col-md-4">
 					<h5>Type</h5>
 					<select name="type" class="chosen-select-no-single" >
 						<option label="blank"></option>		
@@ -68,6 +81,16 @@ include('inc/user_header.php');
                               <option value="Shop">Shop/Showroom</option>
                               <option value="Store Room">Store Room</option>
                             <option value="Warehouse">Warehouse</option>
+					</select>
+				</div>
+
+				<div class="col-md-4">
+					<h5>Purpose</h5>
+					<select required="" name="purpose" class="chosen-select-no-single" >
+						<option label="blank"></option>		
+						<option value="Rent">For Rent</option>
+                         <option value="Sale">For Sale</option>
+                          
 					</select>
 				</div>
 
@@ -132,6 +155,33 @@ include('inc/user_header.php');
 			<div class="row with-forms">
 
 				<!-- Address -->
+				
+
+				<!-- City -->
+				<div class="col-md-6">
+					<h5>State</h5>
+					   <select class="form-control" class="chos name="state" id="state" onchange="change_location();">
+                                 <option><?php echo $row['state'] ?></option>
+                                        <?php
+                                      while ($re_st = mysqli_fetch_array($stlg)) {
+                                      echo '<option value="'.$re_st['name'].'" >
+                                      '.$re_st['name'].'</option>';
+                                               }
+                                             ?>
+                                      </select>
+				</div>
+
+
+				<!-- City -->
+				<div class="col-md-6">
+					<h5>City</h5>
+					 <select required="" name="lga" id="city" class="form-control" name="choose-state">
+                          <option><?php echo $row['lga'] ?></option>
+                              </select>
+				</div>
+
+				<!-- Zip-Code -->
+
 				<div class="col-md-12">
 					<h5>Address</h5>
 					
@@ -140,31 +190,6 @@ include('inc/user_header.php');
                      <input type="hidden" name="longitude" id="longitude" placeholder="Longitude" value="" >
                       <input type="hidden" name="city" id="city" placeholder="City" value="" >
 				</div>
-
-				<!-- City -->
-				<div class="col-md-6">
-					<h5>State</h5>
-					  <select required=""  class="chosen-select-no-single"  name="state" id="state1" onchange="change_location();">
-                                             <option></option>
-                                        <?php
-                                            while ($re_st = mysqli_fetch_array($stlg)) {
-                                            echo '<option value="'.$re_st['state'].'" >
-                                            '.$re_st['state'].'</option>';
-                                                    }
-                                                    ?>
-                                                </select>
-				</div>
-
-				<!-- City -->
-				<div class="col-md-6">
-					<h5>City</h5>
-					<select required=""  name="lga" id="city2" class="form-control" name="choose-state">
-                                            <option></option>
-                                            
-                                        </select>
-				</div>
-
-				<!-- Zip-Code -->
 				
 
 			</div>
@@ -196,20 +221,20 @@ include('inc/user_header.php');
 
 				<!-- Name -->
 				<div class="col-md-4">
-					<h5>Name</h5>
-					<input name="fullname" value="<?php echo $row['name'] ?>"  type="text">
+					<!-- <h5>Name</h5> -->
+					<input name="fullname" value="<?php echo $row['name'] ?>"  type="hidden">
 				</div>
 
 				<!-- Email -->
 				<div class="col-md-4">
-					<h5>E-Mail</h5>
-					<input  name="email" value="<?php echo $row['email'] ?>" type="text">
+				<!-- 	<h5>E-Mail</h5> -->
+					<input  name="email" value="<?php echo $row['email'] ?>" type="hidden">
 				</div>
 
 				<!-- Name -->
 				<div class="col-md-4">
-					<h5>Phone <span>(optional)</span></h5>
-					<input name=""phone value="<?php echo $row['phone'] ?>" type="text">
+					<!-- <h5>Phone <span>(optional)</span></h5> -->
+					<input name=""phone value="<?php echo $row['phone'] ?>" type="hidden">
 
 					
 
@@ -271,21 +296,21 @@ include('inc/user_header.php');
 </script>
  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxkyVw9JMI0N6HBsjIKelYK337j81RNec&libraries=places&callback=initAutocomplete"
         async defer></script>
-
-         <script>
+ <!-- FOR STATE AND CITY DROPDOWN ON EDIT PROFILE PAGE -->
+        <script> 
 function change_location()
 {
-    var state1 = $("#state1").val();
+    var state = $("#state").val();
     
        $.ajax({
         type: "POST",
         url: "core/get_city.php",
-        data: "state1="+state1,
+        data: "state="+state,
         cache: false,
         success: function(response)
             {
                     //alert(response);return false;
-                $("#city2").html(response);
+                $("#city").html(response);
             }
             });
     

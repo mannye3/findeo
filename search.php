@@ -7,7 +7,7 @@
 <!-- Titlebar
 ================================================== -->
 <div class="parallax titlebar"
-	data-background="images/listings-parallax.jpg"
+	data-background="images/place.jpg"
 	data-color="#333333"
 	data-color-opacity="0.7"
 	data-img-width="800"
@@ -19,7 +19,7 @@
 				<div class="col-md-12">
 
 					<h2>Listings</h2>
-					<span>Grid Layout With Sidebar</span>
+					<span><?php echo $num_rows;?> Properties found for <?php echo $p_location ?></span>
 					
 					<!-- Breadcrumbs -->
 					<nav id="breadcrumbs">
@@ -62,7 +62,12 @@
 					<a href="property.php?pro=<?php echo $row_sear_pro["property_no"]; ?>" class="listing-img-container">
 
 						<div class="listing-badges">
-							<span class="featured"><?php  echo ucwords($row_sear_pro["type"]) ?></span>
+							<span class="featured">For <?php  echo ucwords($row_sear_pro["purpose"]) ?></span>
+							
+						</div>
+
+						<div class="listing-badges2">
+							<span class="featured"><img style="width: 170px;" src="images/watermark.png" ></span>
 							
 						</div>
 
@@ -94,6 +99,7 @@
 							
 							<li><?php echo $row_sear_pro["rooms"]; ?> Bedroom</li>
 							<li><?php echo $row_sear_pro["bathrooms"]; ?> Bathroms</li>
+							<li>Type: <?php echo $row_sear_pro["type"]; ?> </li>
 							
 						</ul>
 
@@ -110,7 +116,7 @@
 }
 ?>
 				<!-- Listing Item / End -->
-
+<?php  echo $error ?>
 
 
 			</div>
@@ -152,6 +158,8 @@
 			</div>
 			<!-- Pagination / End -->
 
+			
+
 		</div>
 
 
@@ -178,16 +186,21 @@
 					<!-- Row_sear_pro -->
 					<div class="row_sear_pro with-forms">
 						<!-- Type -->
-						<div class="col-md-12">
-						<select data-placeholder="Any Type" name="type" class="chosen-select-no-single" >
-								<option value="flat">Flat</option>
-								<option value="bungalow">Bungalow</option>
-								<option value="shop">Shop</option>
-								<option value="warehouse">Warehouse</option>
-								<option value="bungalow">Bungalow</option>	
+						<!-- <div class="col-md-12"> -->
+						<!-- <select data-placeholder="Any Type" name="type" class="chosen-select-no-single" >
+								<option value="Bungalow">Bungalow</option>
+		                         <option value="Duplex">Duplex</option>
+		                          <option value="Flat">Flat</option>
+		                           <option value="House">House</option>
+		                            <option value="Industrial Building">Industrial Building</option>
+		                             <option value="Office">Office Space</option>
+		                              <option value="Land">Land</option>
+		                              <option value="Shop">Shop/Showroom</option>
+		                              <option value="Store Room">Store Room</option>
+		                            <option value="Warehouse">Warehouse</option>	
 								</select>
-													</div>
-					</div>
+													</div> -->
+					<!-- </div> -->
 					<!-- Row_sear_pro / End -->
 
 					<button class="button fullwidth margin-top-30" type="submit" name="search">Search</button>

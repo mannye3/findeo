@@ -3852,6 +3852,46 @@ button.fs-map-btn.button {
 }
 
 
+
+.listing-badges2 span {
+	
+	top: 15px;
+	right: 30px;
+	position: absolute;
+}
+
+
+.listing-badges2 .featured {
+	
+	left: -10px;
+	top: 70px;
+	
+	text-align: center;
+
+	
+}
+
+
+
+.listing-badges3 span {
+	
+	top: 15px;
+	right: 30px;
+	position: absolute;
+}
+
+
+.listing-badges3 .featured {
+	
+	left: -10px;
+	top: 250px;
+	
+	text-align: center;
+
+	
+}
+
+
 /* Like Icon */
 span.like-icon {
 	color: #fff;

@@ -57,6 +57,7 @@ include('inc/user_header.php');
 							<h4><a href="property.php?pro=<?php echo $rw5["property_no"]; ?>"><?php echo $rw5["title"]; ?></a></h4>
 							<span><?php echo $rw5["address"]; ?>, <?php  echo ucwords($rw5["lga"]) ?>, <?php echo $rw5["state"]; ?> </span>
 							<span class="table-property-price">₦<?php  echo number_format($rw5["price"]).""; ?></span> 
+							<span class="table-property-price">For <?php  echo $rw5["purpose"]; ?></span> 
 
 							<?php   
 							if ($rw5['status'] == 1){

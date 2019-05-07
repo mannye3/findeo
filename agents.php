@@ -11,13 +11,13 @@ include('inc/header.php'); ?>
 			<div class="col-md-12">
 
 				<h2>Agents</h2>
-				<span>List of Our Agents</span>
+				<!-- <span>List of Our Agents</span> -->
 				
 				<!-- Breadcrumbs -->
 				<nav id="breadcrumbs">
 					<ul>
-						<li><a href="#">Home</a></li>
-						<li>Listings</li>
+						<li><a href="index.php">Home</a></li>
+						<li>Agents</li>
 					</ul>
 				</nav>
 

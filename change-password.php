@@ -41,19 +41,19 @@ include('inc/user_header.php');
 			<div class="row">
 				<form method="post">
 				<div class="col-md-6  my-profile">
-					<?php echo $ermsg2;  ?>
+					<?php echo $alert;  ?>
 					<h4 class="margin-top-0 margin-bottom-30">Change Password</h4>
 
 					<label>Current Password</label>
-					<input name="password" type="password">
+					<input name="password" required="" type="password">
 
 					<label>New Password</label>
-					<input minlength="8" id="password" name="newpassword" type="password">
+					<input minlength="8" required="" id="password" name="newpassword" type="password">
 
 					<label>Confirm New Password</label>
 					<input id="confirm_password" name="confirm_Password" type="password">
 
-					<button name="change-pass" type="submit" class="margin-top-20 button">Save Changes</button>
+					<button name="change-pass"  type="submit" class="margin-top-20 button">Save Changes</button>
 				</div>
 				</form>
 

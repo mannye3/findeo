@@ -6,7 +6,7 @@
 			<div class="col-md-5 col-sm-6">
 				<img class="footer-logo" src="images/logo.png" alt="">
 				<br><br>
-				<p>HomeHub is Nigeria’s number one property website. We are not estate agents aone, but we aim to be the place for property seekers to find details of all properties available to buy or rent.</p>
+				<p>We are not estate agents alone, but we aim to be the place for property seekers to find details of all properties available to buy or rent.</p>
 			</div>
 
 			<div class="col-md-4 col-sm-6 ">
@@ -32,15 +32,15 @@
 			<div class="col-md-3  col-sm-12">
 				<h4>Contact Us</h4>
 				<div class="text-widget">
-					<span>12345 Little Lonsdale St, Melbourne</span> <br>
-					Phone: <span>(123) 123-456 </span><br>
-					E-Mail:<span> <a href="#"><span class="__cf_email__" data-cfemail="cda2ababa4aea88da8b5aca0bda1a8e3aea2a0">[email&#160;protected]</span></a> </span><br>
+					<span>Lagos, Nigeria</span> <br>
+					Phone: <span>+2349073627352 </span><br>
+					E-Mail:<span> <a href="#"><span class="__cf_email__">info@prifa.com.ng</span></a> </span><br>
 				</div>
 
 				<ul class="social-icons margin-top-20">
 					<li><a class="facebook" href="#"><i class="icon-facebook"></i></a></li>
 					<li><a class="twitter" href="#"><i class="icon-twitter"></i></a></li>
-					<li><a class="instagram" href="#"><i class="icon-instagram"></i></a></li>
+					<li><a class="instagram" href="https://www.instagram.com/prifa_ng"><i class="icon-instagram"></i></a></li>
 				</ul>
 
 			</div>
@@ -50,7 +50,7 @@
 		<!-- Copyright -->
 		<div class="row">
 			<div class="col-md-12">
-				<div class="copyrights"><p class="copy">©  <?php echo date('Y'); ?>  Designed by <a href="http://e3tech.com.ng/" target="_blank">E3 Technologies</a> 
+				<div class="copyrights"><p class="copy">©  <?php echo date('Y'); ?>  Design by <a href="http://e3tech.com.ng/" target="_blank">E3 Technologies</a> 
                 </p></div>
 			</div>
 		</div>
@@ -135,7 +135,7 @@
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxkyVw9JMI0N6HBsjIKelYK337j81RNec&libraries=places&callback=initAutocomplete"
         async defer></script>
 
-        
+      <script src="scripts/jquery.min.js"></script>   
 
 <!-- DropZone | Documentation: http://dropzonejs.com -->
 <script type="text/javascript" src="scripts/dropzone.js"></script>

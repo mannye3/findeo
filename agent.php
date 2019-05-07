@@ -53,7 +53,7 @@ include('core/agent.php');
 
 					<ul class="agent-contact-details">
 						<li><i class="sl sl-icon-call-in"></i><?php echo $row_agent["phone"]; ?></li>
-						<li><i class="fa fa-envelope-o "></i><a href="#"><span class="__cf_email__" data-cfemail="563c3338383f3316332e373b263a337835393b"><?php echo $row_agent["email"]; ?></span></a></li>
+						<li><i class="fa fa-envelope-o "></i><a href="#"><span class="__cf_email__"><?php echo $row_agent["email"]; ?></span></a></li>
 					</ul>
 
 					
@@ -93,7 +93,7 @@ include('core/agent.php');
 					<a href="property.php?pro=<?php echo $row_ag_pro["property_no"]; ?>" class="listing-img-container">
 
 						<div class="listing-badges">
-							<span class="featured"><?php  echo ucwords($row_ag_pro["type"]) ?></span>
+							<span class="featured">For <?php  echo ucwords($row_ag_pro["purpose"]) ?></span>
 							
 						</div>
 
@@ -122,6 +122,7 @@ include('core/agent.php');
 							
 							<li><?php echo $row_ag_pro["rooms"]; ?> Bedroom</li>
 							<li><?php echo $row_ag_pro["bathrooms"]; ?> Bathroms</li>
+							<li>Type: <?php echo $row_ag_pro["type"]; ?> </li>
 							
 						</ul>
 
@@ -172,7 +173,7 @@ include('core/agent.php');
 						<a href="property.php?pro=<?php echo $row_fea_pro["property_no"]; ?>" class="listing-img-container">
 
 							<div class="listing-badges">
-								<span class="featured"><?php  echo ucwords($row_fea_pro["type"]) ?></span>
+								<span class="featured">For <?php  echo ucwords($row_fea_pro["puropse"]) ?></span>
 								
 							</div>
 
@@ -184,6 +185,7 @@ include('core/agent.php');
 									
 									<li>Bedroom <span><?php echo $row_fea_pro["rooms"]; ?></span></li>
 									<li>Bathroom <span><?php echo $row_fea_pro["bathrooms"]; ?></span></li>
+									<li>Type <span><?php echo $row_fea_pro["type"]; ?></span></li>
 									
 								</ul>
 							</div>

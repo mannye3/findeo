@@ -1,0 +1,153 @@
+<?php include('core/select.php');
+include('inc/header.php');
+ ?>
+
+
+
+<!-- Titlebar
+================================================== -->
+<div class="parallax titlebar"
+	data-background="images/listings-parallax.jpg"
+	data-color="#333333"
+	data-color-opacity="0.7"
+	data-img-width="800"
+	data-img-height="505">
+
+	<div id="titlebar">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+
+					<h2>For Rent</h2>
+					<!-- <span>Grid Layout With Sidebar</span> -->
+					
+					<!-- Breadcrumbs -->
+					<nav id="breadcrumbs">
+						<ul>
+							<li><a href="index.php">Home</a></li>
+							<li>Rent</li>
+						</ul>
+					</nav>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- Content
+================================================== -->
+<div class="container">
+	<div class="row sticky-wrapper">
+
+		<div class="col-md-9">
+
+		
+			
+			<!-- Listings -->
+			<div class="listings-container list-layout">
+
+				<!-- Listing Item -->
+				 <?php
+                while ($row5_sale = mysqli_fetch_array($query6)) {
+
+                    $sql_pro_img = "SELECT SUM(num) AS t_img FROM pro_img WHERE property_no=".$row5_sale["property_no"]." ";
+                    $query14 =mysqli_query($con, $sql_pro_img);
+                    $rw14 =mysqli_fetch_array($query14);
+                        $t_img = $rw14['t_img'];
+                                             ?>
+				<div class="listing-item">
+
+					<a href="property.php?pro=<?php echo $row5_sale["property_no"]; ?>" class="listing-img-container">
+
+						<div class="listing-badges">
+							<span class="featured">For <?php  echo ucwords($row5_sale["purpose"]) ?></span>
+							
+						</div>
+
+
+						<div class="listing-badges2">
+							<span class="featured"><img style="width: 170px;" src="images/watermark.png" ></span>
+							
+						</div>
+
+						<div class="listing-img-content">
+							<span class="listing-price">₦<?php  echo number_format($row5_sale["price"]) ?></span>
+							<span  style="float: right;"><?php echo $t_img ?> <i class="fa fa-image"></i></span>
+						</div>
+
+						<img src="uploads/<?php echo $row5_sale["pic"]; ?>" alt="">
+
+					</a>
+					
+					<div class="listing-content">
+
+						<div class="listing-title">
+							<h4><a href="property.php?pro=<?php echo $row5_sale["property_no"]; ?>"><?php echo $row5_sale["title"]; ?></a></h4>
+							
+								<i class="fa fa-map-marker"></i>
+								<?php echo $row5_sale["address"]; ?>. <?php echo $row5_sale["lga"]; ?>, <?php echo $row5_sale["state"]; ?>
+							</a>
+
+							<a href="property.php?pro=<?php echo $row5_sale["property_no"]; ?>" class="details button border">Details</a>
+						</div>
+
+						<ul class="listing-details">
+							
+							<li><?php echo $row5_sale["rooms"]; ?> Bedroom</li>
+							<li><?php echo $row5_sale["bathrooms"]; ?> Bathroms</li>
+
+							<li>Type : <?php echo $row5_sale["type"]; ?> </li>							
+						</ul>
+
+						<div class="listing-footer">
+							<!-- <a href="#"><i class="fa fa-user"></i> Chester Miller</a> -->
+							<span><i class="fa fa-eye"></i><?php echo $row5_sale["view"]; ?> views</span>
+						</div>
+
+					</div>
+					<!-- Listing Item / End -->
+
+				</div>
+				<?php
+                }
+                ?>
+				<!-- Listing Item / End -->
+
+
+
+			</div>
+			<!-- Listings Container / End -->
+
+			
+			<!-- Pagination -->
+			<div class="pagination-container margin-top-20">
+				<nav class="pagination">
+					<?php  
+                        $sql = "SELECT COUNT(id) FROM property WHERE  status=1";  
+                        $rs_result = mysqli_query($con, $sql);  
+                        $row = mysqli_fetch_row($rs_result);  
+                        $total_records = $row[0];  
+                        $total_pages = ceil($total_records / $limit);  
+                        $pagLink = '<div class="pagination-box hidden-mb-45 text-center">
+                                 <nav aria-label="Page navigation example">
+                        <ul class="pagination">';  
+                        for ($i=1; $i<=$total_pages; $i++) {  
+                                     $pagLink .= "<li class=''><a class='current-page' href='rent.php?page=".$i."'>".$i."</a></li>";  
+                        };  
+                        echo $pagLink . " </ul>
+                        </div>";  
+                        ?>
+					
+			</div>
+			<!-- Pagination / End -->
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<?php include('inc/footer.php'); ?>

@@ -11,7 +11,11 @@ include('inc/header.php');
 
 ?>
 
-
+<style type="text/css">
+	.find {
+          color: white;
+            }
+</style>
 <!-- Banner
 ================================================== -->
 <div class="parallax" data-background="images/place.jpg" data-color="#36383e" data-color-opacity="0.5" data-img-width="2500" data-img-height="1600">
@@ -23,29 +27,21 @@ include('inc/header.php');
 				<div class="search-container">
 
 					<!-- Form -->
-					<h2>Find your next home</h2>
-					
+					<h1 class="find">Find your next home</h1>
+					<p class="find">Search properties for rent in Nigeria</p>
+
 					<!-- Row With Forms -->
-					<form method="get" action="search.php">
+						<form method="get" action="search.php">
 					<div class="row with-forms">
 
 						<!-- Property Type -->
-						<div class="col-md-6">
-							<div class="main-search-input">
-								<input type="text" value="<?php echo $p_location;?>" name="location" id="autocomplete" onFocus="geolocate()" placeholder="Where do you want to live?" />
-								<!-- <button class="button"><i class="fa fa-search"></i></button> -->
-							</div>
-							
-						</div>
-
-						<!-- Status -->
 						
-
-						<!-- Main Search Input -->
-						<div class="col-md-6">
-							<div class="main-search-input">
-								<select data-placeholder="Any Type" name="type" class="chosen-select-no-single" >
-								<option value="Bungalow">Bungalow</option>
+						<!-- Status -->
+						<!-- <div class="col-md-6">
+							
+								<select data-placeholder="Select property type" name="type" class="chosen-select-no-single" >
+									<option></option>
+							<option value="Bungalow">Bungalow</option>
                          <option value="Duplex">Duplex</option>
                           <option value="Flat">Flat</option>
                            <option value="House">House</option>
@@ -56,14 +52,19 @@ include('inc/header.php');
                               <option value="Store Room">Store Room</option>
                             <option value="Warehouse">Warehouse</option>
 							</select>
-								<button class="button" type="submit" name="search"><i class="fa fa-search"></i></button>
+						</div> -->
+
+						<!-- Main Search Input -->
+						<div class="col-md-12">
+							<div class="main-search-input">
+								<input type="text" value="<?php echo $p_location;?>" name="location" id="autocomplete" onFocus="geolocate()" placeholder="Where do you want to live?" />
+								<button class="button"><i class="fa fa-search"></i></button>
 							</div>
 						</div>
-
 					</div>
-					</form>
-					
-				
+				</form>
+					<!-- Row With Forms / End -->
+
 
 				</div>
 
@@ -88,11 +89,11 @@ include('inc/header.php');
 				<div class="icon-box-1 alternative">
 
 					<div class="icon-container">
-						<i class="im im-icon-Checked-User"></i>
+						<i class="fa fa-list"></i>
 					</div>
 
-					<h3>Agent Finder</h3>
-					<p>See who specializes in your area, has the most reviews and the right experience to meet your needs.</p>
+					<h3>Free Listing</h3>
+					<p>Easy listing process</p>
 				</div>
 			</div>
 
@@ -101,11 +102,11 @@ include('inc/header.php');
 				<div class="icon-box-1 alternative">
 
 					<div class="icon-container">
-						<i class="im im-icon-Cloud-Computer"></i>
+						<i class="fa fa-search"></i>
 					</div>
 
-					<h3>Modern Technology</h3>
-					<p>More than 10,000 customers buy or sell a home with us each year. We help people and homes find each together.</p>
+					<h3>Safe Search</h3>
+					<p>Search for your prefered properties</p>
 				</div>
 			</div>
 
@@ -114,11 +115,11 @@ include('inc/header.php');
 				<div class="icon-box-1 alternative">
 
 					<div class="icon-container">
-						<i class="im im-icon-Idea"></i>
+						<i class="fa fa-users"></i>
 					</div>
 
-					<h3>Home Designs Ideas</h3>
-					<p>Our specialists can help you get started on that home project. Find paint colors, that perfect tile and more. </p>
+					<h3>Connect</h3>
+					<p>Connect with Agents/Landlords</p>
 				</div>
 			</div>
 
@@ -134,7 +135,7 @@ include('inc/header.php');
 	<div class="row">
 
 		<div class="col-md-12">
-			<h3 class="headline margin-bottom-25 margin-top-65">Featured</h3>
+			<h3 class="headline margin-bottom-25 margin-top-65">Featured Properties</h3>
 		</div>
 
 		<!-- Carousel -->
@@ -153,9 +154,14 @@ include('inc/header.php');
 						<a href="property.php?pro=<?php echo $row_fea_pro["property_no"]; ?>" class="listing-img-container">
 
 							<div class="listing-badges">
-								<span class="featured"><?php  echo ucwords($row_fea_pro["type"]) ?></span>
+								<span class="featured">For <?php  echo ucwords($row_fea_pro["purpose"]) ?></span>
 								
 							</div>
+
+							<div class="listing-badges2">
+							<span class="featured"><img style="width: 170px;" src="images/watermark.png" ></span>
+							
+						</div>
 
 							<div class="listing-img-content">
 								<span class="listing-compact-title"><?php echo $row_fea_pro["title"]; ?> <i>₦<?php  echo number_format($row_fea_pro["price"]).""; ?></i></span>
@@ -164,7 +170,8 @@ include('inc/header.php');
 									
 									<li>Bedroom <span><?php echo $row_fea_pro["rooms"]; ?></span></li>
 									<li>Bathroom <span><?php echo $row_fea_pro["bathrooms"]; ?></span></li>
-									<li>Baths <span>1</span></li>
+									<li>Type <span><?php echo $row_fea_pro["type"]; ?></span></li>
+									
 								</ul>
 							</div>
 
@@ -206,40 +213,30 @@ include('inc/header.php');
 		<div class="row">
 
 			<div class="col-md-12">
-				<h3 class="headline centered margin-bottom-40 margin-top-10">Companies We've Worked With <span>We can assist you with your innovation or commercialisation journey!</span></h3>
+				<h3 class="headline centered margin-bottom-40 margin-top-10">Our Partners</h3>
 			</div>
 			
 			<!-- Carousel -->
-			<div class="col-md-12">
+			<div class="col-md-12 text-center">
 				<div class="logo-carousel dot-navigation">
 					
+					<!-- <div class="item">
+						<img src="images/brand/1.png" alt="">
+					</div> -->
+					
 					<div class="item">
-						<img src="images/logo-01.png" alt="">
+						<img src="images/brand/2.jpg" alt="">
 					</div>
 					
 					<div class="item">
-						<img src="images/logo-02.png" alt="">
+						<img src="images/brand/3.png" alt="">
 					</div>
 					
 					<div class="item">
-						<img src="images/logo-03.png" alt="">
+						<img src="images/brand/4.jpg" alt="">
 					</div>
 					
-					<div class="item">
-						<img src="images/logo-04.png" alt="">
-					</div>
 					
-					<div class="item">
-						<img src="images/logo-05.png" alt="">
-					</div>		
-
-					<div class="item">
-						<img src="images/logo-06.png" alt="">
-					</div>	
-
-					<div class="item">
-						<img src="images/logo-07.png" alt="">
-					</div>
 
 
 				</div>
@@ -262,4 +259,4 @@ include('inc/header.php');
 <!-- Flip banner / End -->
 
 
-<?php include('inc/footer.php');  ?>
+<?php include('inc/home_footer.php');  ?>

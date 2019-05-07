@@ -32,7 +32,7 @@ if($request == 2){
 	$filename = $target_dir.$_POST['name'];
 	$filename2 = $_POST['name'];
 
-	$sql2 ="DELETE  FROM  imgtest WHERE name='".$filename2."' ";
+	$sql2 ="DELETE  FROM  pro_img WHERE pic='".$filename2."' ";
 	$query2 =mysqli_query($con, $sql2); 
 	unlink($filename); exit;
 }

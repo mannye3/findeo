@@ -1,7 +1,7 @@
 <?php
 
-//// SELECT QUERY FROM STUDENTS TABLE  FOR  DASHBOARD AND STUDENTS PAGES ////
-$st = "SELECT DISTINCT state FROM statelga";
+//// SELECT QUERY FOR STATE DROPDOWN ON EDIT PFOFILE PAGE ////
+$st = "SELECT DISTINCT * FROM states";
 $stlg = mysqli_query($con, $st);
 
 

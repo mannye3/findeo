@@ -1,6 +1,6 @@
 <?php 
 include('core/select.php');
-include('core/user_logic.php'); 
+include('core/logic.php'); 
 include('core/single_property.php'); 
 include('inc/header.php'); 
 
@@ -19,7 +19,7 @@ include('inc/header.php');
 				
 				
 				<div class="property-title">
-					<h2><?php echo $row_pro_d['title'] ?> <span class="property-badge">For Rent</span></h2>
+					<h2><?php echo $row_pro_d['title'] ?> <span class="property-badge">For <?php echo $row_pro_d['purpose'] ?></span></h2>
 					<span>
 						<a href="#location" class="listing-address">
 							<i class="fa fa-map-marker"></i>
@@ -51,6 +51,10 @@ include('inc/header.php');
 				 <?php   while ($row9 = mysqli_fetch_array($query9)) {
                                              ?>
 				<img src="uploads/<?php echo $row9["pic"]; ?>" class="item mfp-gallery"></a>
+				<div class="listing-badges3">
+							<span class="featured"><img style="width: 300px;" src="images/watermark.png" ></span>
+							
+						</div>
 				 <?php
                 }
                 ?>
@@ -62,6 +66,7 @@ include('inc/header.php');
 				<?php   while ($row_pro_img2 = mysqli_fetch_array($query_pro_img2)) {
                                              ?>
 				<div class="item"><img width="168" height="109" src="uploads/<?php echo $row_pro_img2["pic"]; ?>"  alt=""></div>
+
 				<?php
                 }
                 ?>
@@ -141,15 +146,18 @@ include('inc/header.php');
 							<div class="agent-photo"><img src="images/user.jpg" alt="" /></div>
 							<div class="agent-details">
 								<h4><a href="agent.php?agent=<?php echo $row_pro_d["user_code"]; ?>"><?php echo $row_pro_d["fullname"] ?></a></h4>
-								<span><i class="sl sl-icon-call-in"></i>(123) 123-456</span>
+								<span><i class="sl sl-icon-call-in"></i>+2349073627352 </span>
 							</div>
 							<div class="clearfix"></div>
 						</div>
+							<?php echo $alert; ?>
+							<form method="post">
 
-						<input type="text" placeholder="Your Email" pattern="^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$">
-						<input type="text" placeholder="Your Phone">
-						<textarea></textarea>
-						<button class="button fullwidth margin-top-5">Send Message</button>
+						<input name="email" type="text" placeholder="Your Email" pattern="^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$">
+						<input type="text" name="phone" placeholder="Your Phone">
+						<textarea name="message" placeholder="Message"></textarea>
+						<button class="button fullwidth margin-top-5" type="submit" name="enquiry">Send Message</button>
+						</form>
 					</div>
 					<!-- Agent Widget / End -->
 
@@ -179,7 +187,7 @@ include('inc/header.php');
 						<a href="property.php?pro=<?php echo $row_fea_pro["property_no"]; ?>" class="listing-img-container">
 
 							<div class="listing-badges">
-								<span class="featured"><?php  echo ucwords($row_fea_pro["type"]) ?></span>
+								<span class="featured">For <?php  echo ucwords($row_fea_pro["purpose"]) ?></span>
 								
 							</div>
 
@@ -191,6 +199,7 @@ include('inc/header.php');
 									
 									<li>Bedroom <span><?php echo $row_fea_pro["rooms"]; ?></span></li>
 									<li>Bathroom <span><?php echo $row_fea_pro["bathrooms"]; ?></span></li>
+									<li>Type <span><?php echo $row_fea_pro["type"]; ?></span></li>
 									
 								</ul>
 							</div>

@@ -4,7 +4,7 @@ if($_FILES["file"]["name"] != '')
 {
  $test = explode('.', $_FILES["file"]["name"]);
  $ext = end($test);
- $name = rand(100, 999) . '.' . $ext;
+ $name = rand(1000, 9999) . '.' . $ext;
  $location = 'profile-pic/' . $name;  
  move_uploaded_file($_FILES["file"]["tmp_name"], $location);
 

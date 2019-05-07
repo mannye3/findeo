@@ -18,14 +18,14 @@ include('inc/header.php');
 			<div class="row">
 				<div class="col-md-12">
 
-					<h2>Listings</h2>
-					<span>Grid Layout With Sidebar</span>
+					<h2>For Rent</h2>
+					<!-- <span>Grid Layout With Sidebar</span> -->
 					
 					<!-- Breadcrumbs -->
 					<nav id="breadcrumbs">
 						<ul>
-							<li><a href="#">Home</a></li>
-							<li>Listings</li>
+							<li><a href="index.php">Home</a></li>
+							<li>Rent</li>
 						</ul>
 					</nav>
 
@@ -62,7 +62,13 @@ include('inc/header.php');
 					<a href="property.php?pro=<?php echo $row5_rent["property_no"]; ?>" class="listing-img-container">
 
 						<div class="listing-badges">
-							<span class="featured"><?php  echo ucwords($row5_rent["type"]) ?></span>
+							<span class="featured">For <?php  echo ucwords($row5_rent["purpose"]) ?></span>
+							
+						</div>
+
+
+						<div class="listing-badges2">
+							<span class="featured"><img style="width: 170px;" src="images/watermark.png" ></span>
 							
 						</div>
 
@@ -91,7 +97,8 @@ include('inc/header.php');
 							
 							<li><?php echo $row5_rent["rooms"]; ?> Bedroom</li>
 							<li><?php echo $row5_rent["bathrooms"]; ?> Bathroms</li>
-							
+
+							<li>Type : <?php echo $row5_rent["type"]; ?> </li>							
 						</ul>
 
 						<div class="listing-footer">

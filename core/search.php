@@ -1,25 +1,34 @@
 <?php
+$error="";
 include('connect.php');
-  if(isset($_POST["location"]) OR isset($_POST["type"])  )
+
+
+  if(isset($_POST["location"]))
     {
         $p_location = $_POST["location"];
 
-        $p_type = $_POST["type"];
+        
     }
-    if(isset($_GET["location"]) OR isset($_GET["type"]) )
+    if(isset($_GET["location"]))
     {
         $p_location = $_GET["location"];
 
-        $p_type = $_GET["type"];
+       
     }
 
 
 
 
-$sql_sear_pro = "SELECT * FROM property WHERE  (`address` LIKE '%".$p_location."%' OR `state` LIKE '%".$p_location."%' OR `lga` LIKE '%".$p_location."%') AND (`type` LIKE '%".$p_type."%') AND status=1 ";
+$sql_sear_pro = "SELECT * FROM property WHERE  (`address` LIKE '%".$p_location."%' OR `state` LIKE '%".$p_location."%' OR `lga` LIKE '%".$p_location."%')  AND status=1 ";
     $query_sear_pro = mysqli_query($con,$sql_sear_pro);
-
     $num_rows = mysqli_num_rows($query_sear_pro);
+
+    if ($num_rows=="") {
+      $error ='<div class="notification warning closeable">
+                <p><span>We are sorry, your "'.$p_location.'" search did not match</span> </p>
+                <a class="close" href="#"></a>
+            </div>';
+    }
 
     $per_page = 5;   // Per Page
     $page  = 1;

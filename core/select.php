@@ -9,8 +9,15 @@ $sql_fea_pro = "SELECT * FROM property WHERE status=1   ORDER BY RAND() LIMIT 0,
 //Select Statement from property table(for Rent page)
 if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; };  
 $start_from = ($page-1) * $limit; 
-$sql_rent = "SELECT * FROM property WHERE  status=1 ORDER BY id ASC LIMIT $start_from, $limit ";
+$sql_rent = "SELECT * FROM property WHERE  status=1 AND purpose='Rent' ORDER BY id ASC LIMIT $start_from, $limit ";
 $query5  = mysqli_query($con, $sql_rent);
+
+
+//Select Statement from property table(for Rent page)
+if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; };  
+$start_from = ($page-1) * $limit; 
+$sql_sale = "SELECT * FROM property WHERE  status=1 AND purpose='Sale' ORDER BY id ASC LIMIT $start_from, $limit ";
+$query6  = mysqli_query($con, $sql_sale);
 	
 
 //Select Statement from users table(For Agent page)
